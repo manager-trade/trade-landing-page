@@ -18,10 +18,11 @@ import {
   CheckCircle2,
   Mail,
   Phone,
-  MapPinned,
-  Send,
+  // eslint-disable-next-line deprecation/deprecation
   Instagram,
+  // eslint-disable-next-line deprecation/deprecation
   Linkedin,
+  // eslint-disable-next-line deprecation/deprecation
   Facebook,
 } from "lucide-react";
 import {
@@ -312,43 +313,40 @@ const APP_FEATURE_GROUPS = [
 const FOOTER_COLUMNS = [
   {
     title: "Produto",
-    links: ["Funcionalidades", "Plataforma Web", "App Mobile", "Preços"],
+    links: [
+      { label: "Funcionalidades", href: "/#funcionalidades" },
+      { label: "Plataforma Web", href: "/#plataforma" },
+      { label: "App Mobile", href: "/#mobile" },
+    ],
   },
   {
     title: "Empresa",
-    links: ["Sobre Nós", "Blog", "Parceiros", "Carreiras"],
+    links: [
+      { label: "Sobre Nós", href: "/sobre" },
+      { label: "Parceiros", href: "/parceiros" },
+    ],
   },
   {
     title: "Suporte",
-    links: ["Central de Ajuda", "Documentação", "Status", "Fale Conosco"],
+    links: [
+      { label: "Central de Ajuda", href: "#" },
+      { label: "Documentação", href: "#" },
+      { label: "Fale Conosco", href: "/#contato" },
+    ],
   },
   {
     title: "Legal",
-    links: ["Termos de Uso", "Privacidade", "Política de Privacidade", "LGPD"],
+    links: [
+      { label: "Termos de Uso", href: "/termos" },
+      { label: "Política de Privacidade", href: "/politica-de-privacidade" },
+      { label: "LGPD", href: "/lgpd" },
+    ],
   },
 ];
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    nome: "",
-    empresa: "",
-    email: "",
-    telefone: "",
-    mensagem: "",
-  });
-
-  function handleInput(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    // form submission handler
-  }
 
   return (
     <div className="min-h-screen bg-white font-sans">
@@ -824,13 +822,13 @@ export default function LandingPage() {
                 </h4>
                 <ul className="space-y-2">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
                         className="text-sm text-gray-400 hover:text-orange-400 transition-colors"
                       >
-                        {link}
-                      </a>
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
