@@ -7,9 +7,9 @@ export const metadata = {
 const sections = [
   {
     title: "1. Introdução",
-    content: `A Trade Manager Ltda. ("Trade Manager", "nós") está comprometida com a proteção da privacidade dos dados pessoais tratados por meio de sua plataforma. Esta Política de Privacidade descreve quais dados coletamos, como os utilizamos, com quem os compartilhamos e quais são os direitos dos titulares.
+    content: `A Trade Manager Soluções em Trade Marketing Ltda. ("Trade Manager", "nós") está comprometida com a proteção da privacidade dos dados pessoais tratados por meio de seu produto. Esta Política de Privacidade descreve quais dados coletamos, como os utilizamos, com quem os compartilhamos e quais são os direitos dos titulares.
 
-Esta Política se aplica à plataforma web (web.trademanager.com.br) e ao aplicativo móvel Trade Manager, utilizados por empresas de Trade Marketing e pelos promotores de vendas em campo.`,
+Esta Política se aplica ao produto Trade+, composto pela plataforma web (web.trademanager.com.br) e pelo aplicativo móvel Trade+, utilizados por empresas de Trade Marketing e pelos promotores de vendas em campo.`,
   },
   {
     title: "2. Dados Coletados",
@@ -105,8 +105,8 @@ Para exercer esses direitos, entre em contato pelo e-mail: privacidade@trademana
     content: `Dúvidas sobre esta Política de Privacidade podem ser enviadas para:
 
 E-mail: privacidade@trademanager.com.br
-Encarregado de Proteção de Dados (DPO): [Nome a definir]
-Endereço: São Paulo – SP, Brasil`,
+Encarregado de Proteção de Dados (DPO): a definir
+Endereço: R. Manoel Felipe, 108, Sala 3, Buritis, Boa Vista – RR, CEP 69.309-170`,
   },
 ];
 

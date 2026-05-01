@@ -65,10 +65,12 @@ export default function SobrePage() {
             Sobre a Trade Manager
           </h1>
           <p className="text-gray-600 leading-relaxed text-lg">
-            Somos uma empresa brasileira especializada em tecnologia para Trade
-            Marketing. Desenvolvemos a plataforma Trade Manager para resolver um
-            problema real: a dificuldade de gerenciar equipes de promotores de
-            vendas em campo de forma eficiente, rastreável e confiável.
+            Somos uma empresa brasileira de tecnologia para Trade Marketing,
+            sediada em Boa Vista – RR. Desenvolvemos o{" "}
+            <strong>Trade+</strong> — nossa plataforma completa de gestão de
+            promotores de vendas em campo — para resolver um problema real: a
+            dificuldade de acompanhar equipes de field de forma eficiente,
+            rastreável e confiável.
           </p>
         </div>
       </section>
@@ -81,22 +83,23 @@ export default function SobrePage() {
           </h2>
           <div className="text-gray-600 leading-relaxed space-y-4 text-sm">
             <p>
-              A Trade Manager nasceu da vivência direta com os desafios do Trade
-              Marketing. Vimos empresas perdendo produtividade e visibilidade
-              por dependerem de planilhas, ligações e processos manuais para
-              acompanhar centenas de visitas diárias de promotores espalhados
-              por diferentes cidades e redes varejistas.
+              Fundada em julho de 2024, em Boa Vista – RR, a Trade Manager
+              nasceu da vivência direta com os desafios do Trade Marketing. Vimos
+              empresas perdendo produtividade e visibilidade por dependerem de
+              planilhas, ligações e processos manuais para acompanhar centenas de
+              visitas diárias de promotores espalhados por diferentes cidades e
+              redes varejistas.
             </p>
             <p>
-              Diante disso, desenvolvemos uma plataforma completa que conecta o
-              gestor ao promotor em campo: do planejamento do roteiro à
-              confirmação de presença com geolocalização, da conferência de
-              produtos ao controle de validade — tudo em tempo real, organizado
-              e auditável.
+              Diante disso, desenvolvemos o <strong>Trade+</strong> — uma
+              plataforma completa que conecta o gestor ao promotor em campo: do
+              planejamento do roteiro à confirmação de presença com
+              geolocalização, da conferência de produtos ao controle de validade
+              — tudo em tempo real, organizado e auditável.
             </p>
             <p>
-              Hoje, a Trade Manager ajuda empresas de todos os portes a
-              transformar suas operações de campo em vantagem competitiva.
+              Hoje, o Trade+ ajuda empresas a transformar suas operações de
+              campo em vantagem competitiva.
             </p>
           </div>
         </section>
@@ -110,6 +113,10 @@ export default function SobrePage() {
             Simplificar a gestão de promotores de vendas, tornando cada visita
             ao ponto de venda rastreável, produtiva e orientada a dados — para
             que as empresas possam focar no que importa: vender mais.
+          </p>
+          <p className="mt-4 text-sm text-gray-400">
+            Trade Manager Soluções em Trade Marketing Ltda. · CNPJ
+            55.903.475/0001-80 · Boa Vista, RR
           </p>
         </section>
 
@@ -128,7 +135,10 @@ export default function SobrePage() {
                   <f.icon className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900 mb-1">{f.label}</p>
+                  <p className="font-semibold text-gray-900 mb-1">
+                    {f.label}{" "}
+                    <span className="text-orange-600">Trade+</span>
+                  </p>
                   <p className="text-sm text-gray-500">{f.desc}</p>
                 </div>
               </div>

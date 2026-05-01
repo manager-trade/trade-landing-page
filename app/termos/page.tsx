@@ -7,16 +7,16 @@ export const metadata = {
 const sections = [
   {
     title: "1. Aceitação dos Termos",
-    content: `Ao acessar ou utilizar a plataforma Trade Manager — composta pelo sistema web disponível em web.trademanager.com.br e pelo aplicativo móvel Trade Manager — você ("Usuário") concorda integralmente com estes Termos de Uso. Caso não concorde com qualquer disposição, interrompa imediatamente o uso da plataforma.
+    content: `Ao acessar ou utilizar o produto Trade+ — composto pelo sistema web disponível em web.trademanager.com.br e pelo aplicativo móvel Trade+ — você ("Usuário") concorda integralmente com estes Termos de Uso. Caso não concorde com qualquer disposição, interrompa imediatamente o uso da plataforma.
 
-Estes termos constituem um contrato vinculante entre o Usuário (ou a empresa por ele representada) e a Trade Manager Ltda., CNPJ [a definir], com sede em São Paulo – SP.`,
+Estes termos constituem um contrato vinculante entre o Usuário (ou a empresa por ele representada) e a Trade Manager Soluções em Trade Marketing Ltda., CNPJ 55.903.475/0001-80, com sede na R. Manoel Felipe, 108, Sala 3, Bairro Buritis, Boa Vista – RR, CEP 69.309-170.`,
   },
   {
     title: "2. Descrição do Serviço",
-    content: `O Trade Manager é uma solução SaaS (Software as a Service) voltada para a gestão de promotores de vendas em campo. A plataforma oferece:
+    content: `O Trade Manager é uma empresa de tecnologia para Trade Marketing. Seu produto principal — o Trade+ — é uma solução SaaS voltada para a gestão de promotores de vendas em campo, composta por:
 
-• Plataforma Web: gerenciamento de lojas, catálogo de produtos, roteiros de visitas, controle de usuários e emissão de relatórios gerenciais.
-• Aplicativo Móvel: roteiro diário de visitas, check-in e check-out com geolocalização e foto obrigatória, conferência de produtos por código de barras, controle de validade de itens, e consulta de informações das lojas.
+• Plataforma Web Trade+: gerenciamento de lojas, catálogo de produtos, roteiros de visitas, controle de usuários e emissão de relatórios gerenciais.
+• Aplicativo Móvel Trade+: roteiro diário de visitas, check-in e check-out com geolocalização e foto obrigatória, conferência de produtos por código de barras, controle de validade de itens, e consulta de informações das lojas.
 
 O serviço é destinado exclusivamente a empresas e profissionais do setor de Trade Marketing.`,
   },
@@ -46,7 +46,7 @@ O serviço é destinado exclusivamente a empresas e profissionais do setor de Tr
   },
   {
     title: "6. Propriedade Intelectual",
-    content: `Todos os direitos de propriedade intelectual relativos à plataforma Trade Manager — incluindo, mas não se limitando a, código-fonte, design, logotipos, marca, textos e funcionalidades — são de titularidade exclusiva da Trade Manager Ltda.
+    content: `Todos os direitos de propriedade intelectual relativos ao produto Trade+ — incluindo, mas não se limitando a, código-fonte, design, logotipos, marca, textos e funcionalidades — são de titularidade exclusiva da Trade Manager Soluções em Trade Marketing Ltda.
 
 Nenhuma disposição destes Termos concede ao Usuário qualquer direito sobre a propriedade intelectual da Trade Manager, exceto a licença limitada de uso da plataforma durante a vigência do contrato.`,
   },
@@ -74,7 +74,7 @@ Após a rescisão, os dados do Usuário serão mantidos por até 90 (noventa) di
   },
   {
     title: "11. Lei Aplicável e Foro",
-    content: `Estes Termos são regidos pela legislação brasileira. Quaisquer disputas decorrentes deste instrumento serão submetidas ao Foro Central da Comarca de São Paulo – SP, com renúncia expressa a qualquer outro, por mais privilegiado que seja.`,
+    content: `Estes Termos são regidos pela legislação brasileira. Quaisquer disputas decorrentes deste instrumento serão submetidas ao Foro da Comarca de Boa Vista – RR, com renúncia expressa a qualquer outro, por mais privilegiado que seja.`,
   },
 ];
 

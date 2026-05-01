@@ -837,7 +837,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
-            © 2026 Trade Manager. Todos os direitos reservados.
+            © 2026 Trade Manager Soluções em Trade Marketing Ltda. Todos os direitos reservados.
           </div>
         </div>
       </footer>

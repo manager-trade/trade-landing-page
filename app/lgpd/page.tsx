@@ -7,7 +7,7 @@ export const metadata = {
 const sections = [
   {
     title: "1. Compromisso com a LGPD",
-    content: `A Trade Manager Ltda. está comprometida com o cumprimento integral da Lei Geral de Proteção de Dados Pessoais (LGPD — Lei n.º 13.709, de 14 de agosto de 2018), que regula o tratamento de dados pessoais no Brasil.
+    content: `A Trade Manager Soluções em Trade Marketing Ltda. (CNPJ 55.903.475/0001-80) está comprometida com o cumprimento integral da Lei Geral de Proteção de Dados Pessoais (LGPD — Lei n.º 13.709, de 14 de agosto de 2018), que regula o tratamento de dados pessoais no Brasil.
 
 Esta página apresenta de forma objetiva como a Trade Manager se adequa à LGPD, quais os direitos dos titulares e como exercê-los.`,
   },
@@ -15,9 +15,9 @@ Esta página apresenta de forma objetiva como a Trade Manager se adequa à LGPD,
     title: "2. Papel da Trade Manager no Tratamento de Dados",
     content: `A Trade Manager atua em dois papéis distintos:
 
-Controladora: em relação aos dados dos administradores e responsáveis das empresas contratantes (e-mail, nome, telefone, CNPJ), que são necessários para a execução do contrato de prestação de serviços.
+Controladora: em relação aos dados dos administradores e responsáveis das empresas contratantes (e-mail, nome, telefone, CNPJ), que são necessários para a execução do contrato de prestação de serviços do produto Trade+.
 
-Operadora: em relação aos dados dos promotores de vendas (usuários do aplicativo móvel), que são inseridos e gerenciados pelas empresas contratantes. Neste caso, a empresa contratante é a controladora e a Trade Manager processa os dados em seu nome, seguindo as instruções contratuais.`,
+Operadora: em relação aos dados dos promotores de vendas (usuários do aplicativo Trade+), que são inseridos e gerenciados pelas empresas contratantes. Neste caso, a empresa contratante é a controladora e a Trade Manager processa os dados em seu nome, seguindo as instruções contratuais.`,
   },
   {
     title: "3. Dados Pessoais Tratados",
