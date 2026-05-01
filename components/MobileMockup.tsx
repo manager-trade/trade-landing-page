@@ -477,7 +477,7 @@ function PerfilScreen() {
             margin: 0,
           }}
         >
-          email.dummy@exemplo.com
+          suporte@trademanager.com.br
         </p>
       </div>
 

@@ -706,172 +706,73 @@ export default function LandingPage() {
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
       <section id="contato" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
-              Contato
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Fale com nossa equipe
-            </h2>
-            <p className="mt-3 text-gray-500 max-w-md mx-auto">
-              Quer saber mais sobre o Trade Manager? Entre em contato e solicite
-              uma demonstração gratuita.
-            </p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
+            Contato
+          </span>
+          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
+            Fale com nossa equipe
+          </h2>
+          <p className="mt-3 text-gray-500 max-w-md mx-auto">
+            Nossa equipe está pronta para ajudar você a transformar sua operação
+            de Trade Marketing.
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <a
+              href="mailto:suporte@trademanager.com.br"
+              className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                <Mail className="w-5 h-5 text-orange-600" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                E-mail
+              </p>
+              <p className="text-sm font-medium text-gray-800">
+                suporte@trademanager.com.br
+              </p>
+            </a>
+
+            <a
+              href="tel:+559591390527"
+              className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                <Phone className="w-5 h-5 text-orange-600" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                Telefone
+              </p>
+              <p className="text-sm font-medium text-gray-800">
+                +55 (95) 99139-0527
+              </p>
+            </a>
+
+            <div className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200">
+              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
+                <Clock className="w-5 h-5 text-orange-600" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                Atendimento
+              </p>
+              <p className="text-sm font-medium text-gray-800 text-center">
+                Seg–Sex: 9h às 18h
+                <br />
+                Suporte Online 24h
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact info */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-6">
-                Informações de Contato
-              </h3>
-              <p className="text-gray-500 text-sm mb-8">
-                Nossa equipe está pronta para ajudar você a transformar sua
-                operação de Trade Marketing.
-              </p>
-              <ul className="space-y-5">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">
-                      E-mail
-                    </p>
-                    <p className="text-sm text-gray-800">
-                      suporte@trademanager.com.br
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">
-                      Telefone
-                    </p>
-                    <p className="text-sm text-gray-800">+55 (11) 99999-9999</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-                    <MapPinned className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">
-                      Endereço
-                    </p>
-                    <p className="text-sm text-gray-800">
-                      São Paulo, SP - Brasil
-                    </p>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="mt-8 p-5 rounded-xl bg-white border border-gray-200">
-                <p className="text-sm font-semibold text-gray-900 mb-1">
-                  Horário de Atendimento
-                </p>
-                <p className="text-sm text-gray-500">
-                  Segunda a Sexta: 9h às 18h
-                </p>
-                <p className="text-sm text-gray-500">Sábado: 9h às 13h</p>
-                <p className="text-sm text-gray-500">Suporte Online (24h)</p>
-              </div>
-            </div>
-
-            {/* Contact form */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-8">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Solicite uma Demonstração
-              </h3>
-              <p className="text-sm text-gray-500 mb-6">
-                Preencha o formulário e entraremos em contato em até 24 horas.
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">
-                      Nome
-                    </label>
-                    <input
-                      type="text"
-                      name="nome"
-                      value={formData.nome}
-                      onChange={handleInput}
-                      placeholder="Seu nome"
-                      required
-                      className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">
-                      Empresa
-                    </label>
-                    <input
-                      type="text"
-                      name="empresa"
-                      value={formData.empresa}
-                      onChange={handleInput}
-                      placeholder="Nome da empresa"
-                      required
-                      className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInput}
-                      placeholder="seu@email.com"
-                      required
-                      className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">
-                      Telefone
-                    </label>
-                    <input
-                      type="tel"
-                      name="telefone"
-                      value={formData.telefone}
-                      onChange={handleInput}
-                      placeholder="(11) 99999-9999"
-                      className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">
-                    Mensagem
-                  </label>
-                  <textarea
-                    name="mensagem"
-                    value={formData.mensagem}
-                    onChange={handleInput}
-                    placeholder="Conte sobre sua necessidade..."
-                    rows={4}
-                    className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors"
-                >
-                  <Send className="w-4 h-4" />
-                  Enviar Mensagem
-                </button>
-              </form>
-            </div>
+          <div className="mt-8">
+            <a
+              href="https://web.trademanager.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
+            >
+              Acessar Sistema
+            </a>
           </div>
         </div>
       </section>
