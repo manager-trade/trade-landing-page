@@ -385,12 +385,14 @@ export default function LandingPage() {
             >
               Faça Contato
             </Link>
-            <Link
-              href="#contato"
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-colors"
+            <a
+              href="https://web.trademanager.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 transition-colors"
             >
-              Solicitar Demo
-            </Link>
+              Acessar Sistema
+            </a>
           </div>
 
           {/* Mobile menu toggle */}
@@ -420,13 +422,15 @@ export default function LandingPage() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="#contato"
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-600 text-white text-center"
+            <a
+              href="https://web.trademanager.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Solicitar Demo
-            </Link>
+              Acessar Sistema
+            </a>
           </div>
         )}
       </header>
@@ -442,7 +446,7 @@ export default function LandingPage() {
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
               Gestão completa de{" "}
-              <span className="text-orange-600">promotores de vendas</span>
+              <span className="text-orange-500">promotores de vendas</span>
             </h1>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Tenha controle total sobre sua equipe de campo. Gerencie visitas,
@@ -475,13 +479,14 @@ export default function LandingPage() {
 
           {/* Bottom: CTA buttons — full width centered */}
           <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="#contato"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
+            <a
+              href="https://web.trademanager.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
             >
-              <Send className="w-4 h-4" />
-              Solicitar Demonstração
-            </Link>
+              Acessar Sistema
+            </a>
             <Link
               href="#funcionalidades"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
@@ -529,7 +534,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── STATS ────────────────────────────────────────────────── */}
-      <section className="bg-orange-600 py-14">
+      {/* <section className="bg-orange-600 py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center">
             {STATS.map((s) => (
@@ -540,7 +545,7 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── WEB PLATFORM ─────────────────────────────────────────── */}
       <section id="plataforma" className="py-20 bg-gray-50">
@@ -584,7 +589,7 @@ export default function LandingPage() {
                     onClick={() => setActiveTab(i)}
                     className={`text-sm px-4 py-2 rounded-lg font-medium transition-colors ${
                       activeTab === i
-                        ? "bg-orange-600 text-white"
+                        ? "border-orange-500 border-2 text-orange-500 bg-white"
                         : "bg-white border border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600"
                     }`}
                   >
@@ -860,7 +865,7 @@ export default function LandingPage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors"
                 >
                   <Send className="w-4 h-4" />
                   Enviar Mensagem
