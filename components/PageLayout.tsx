@@ -30,7 +30,10 @@ export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
       {/* Footer */}
       <footer className="border-t border-gray-100 py-8 mt-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <span>© 2026 Trade Manager Soluções em Trade Marketing Ltda. Todos os direitos reservados.</span>
+          <span>
+            © 2026 Trade Manager Soluções em Trade Marketing Ltda. Todos os
+            direitos reservados.
+          </span>
           <div className="flex gap-5">
             <Link
               href="/termos"

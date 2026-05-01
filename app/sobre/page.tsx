@@ -66,11 +66,10 @@ export default function SobrePage() {
           </h1>
           <p className="text-gray-600 leading-relaxed text-lg">
             Somos uma empresa brasileira de tecnologia para Trade Marketing,
-            sediada em Boa Vista – RR. Desenvolvemos o{" "}
-            <strong>Trade+</strong> — nossa plataforma completa de gestão de
-            promotores de vendas em campo — para resolver um problema real: a
-            dificuldade de acompanhar equipes de field de forma eficiente,
-            rastreável e confiável.
+            sediada em Boa Vista – RR. Desenvolvemos o <strong>Trade+</strong> —
+            nossa plataforma completa de gestão de promotores de vendas em campo
+            — para resolver um problema real: a dificuldade de acompanhar
+            equipes de field de forma eficiente, rastreável e confiável.
           </p>
         </div>
       </section>
@@ -84,11 +83,11 @@ export default function SobrePage() {
           <div className="text-gray-600 leading-relaxed space-y-4 text-sm">
             <p>
               Fundada em julho de 2024, em Boa Vista – RR, a Trade Manager
-              nasceu da vivência direta com os desafios do Trade Marketing. Vimos
-              empresas perdendo produtividade e visibilidade por dependerem de
-              planilhas, ligações e processos manuais para acompanhar centenas de
-              visitas diárias de promotores espalhados por diferentes cidades e
-              redes varejistas.
+              nasceu da vivência direta com os desafios do Trade Marketing.
+              Vimos empresas perdendo produtividade e visibilidade por
+              dependerem de planilhas, ligações e processos manuais para
+              acompanhar centenas de visitas diárias de promotores espalhados
+              por diferentes cidades e redes varejistas.
             </p>
             <p>
               Diante disso, desenvolvemos o <strong>Trade+</strong> — uma
@@ -136,8 +135,7 @@ export default function SobrePage() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">
-                    {f.label}{" "}
-                    <span className="text-orange-600">Trade+</span>
+                    {f.label} <span className="text-orange-600">Trade+</span>
                   </p>
                   <p className="text-sm text-gray-500">{f.desc}</p>
                 </div>
