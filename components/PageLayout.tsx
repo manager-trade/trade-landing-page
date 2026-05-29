@@ -12,7 +12,7 @@ export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
             href="/"
             className="flex items-center gap-2 font-bold text-base text-gray-900"
           >
-            <BrandLogo size="sm" />
+            <BrandLogo size="md" />
             Trade Manager
           </Link>
           <Link

@@ -358,7 +358,7 @@ export default function LandingPage() {
             href="/"
             className="flex items-center gap-2 font-bold text-lg text-gray-900"
           >
-            <BrandLogo size="md" />
+            <BrandLogo size="lg" />
             Trade Manager
           </Link>
 
@@ -789,7 +789,7 @@ export default function LandingPage() {
                 href="/"
                 className="flex items-center gap-2 font-bold text-lg text-white mb-3"
               >
-                <BrandLogo size="md" />
+                <BrandLogo size="lg" />
                 Trade Manager
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed mb-5">

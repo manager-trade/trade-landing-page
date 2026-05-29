@@ -122,7 +122,7 @@ export function AppMockup({
             gap: 6,
           }}
         >
-          <BrandLogo size="sm" className="rounded-sm" />
+          <BrandLogo size="sm" />
           TRADE MANAGER
         </span>
         <span

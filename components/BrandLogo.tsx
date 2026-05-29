@@ -2,9 +2,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const sizes = {
-  sm: 16,
-  md: 20,
-  lg: 24,
+  sm: 20,
+  md: 26,
+  lg: 32,
 } as const;
 
 type BrandLogoProps = {
@@ -21,7 +21,7 @@ export function BrandLogo({ size = "md", className }: BrandLogoProps) {
       alt=""
       width={px}
       height={px}
-      className={cn("shrink-0", className)}
+      className={cn("shrink-0 rounded-lg", className)}
       aria-hidden
     />
   );
