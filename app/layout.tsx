@@ -12,7 +12,14 @@ export const metadata: Metadata = {
   title: "Trade Manager - Gestão completa de promotores de vendas",
   description:
     "Tenha controle total sobre sua equipe de campo. Gerencie visitas, estoque, rotas e desempenho em tempo real com o Trade Manager.",
-  icons: { icon: "/screenshots/favicon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

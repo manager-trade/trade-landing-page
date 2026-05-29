@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { MobileMockup } from "@/components/MobileMockup";
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import {
-  MapPin,
   Menu,
   X,
   LogIn,
@@ -358,7 +358,7 @@ export default function LandingPage() {
             href="/"
             className="flex items-center gap-2 font-bold text-lg text-gray-900"
           >
-            <MapPin className="w-5 h-5 text-orange-600 fill-orange-100" />
+            <BrandLogo size="md" />
             Trade Manager
           </Link>
 
@@ -681,7 +681,9 @@ export default function LandingPage() {
           {/* Bottom: store buttons */}
           <div className="flex flex-wrap gap-3 justify-center">
             <a
-              href="#"
+              href="https://apps.apple.com/br/app/trade/id6633411717"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 px-5 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -690,7 +692,9 @@ export default function LandingPage() {
               App Store
             </a>
             <a
-              href="#"
+              href="https://play.google.com/store/apps/details?id=com.trademanager.tradeapp&pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 px-5 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -785,7 +789,7 @@ export default function LandingPage() {
                 href="/"
                 className="flex items-center gap-2 font-bold text-lg text-white mb-3"
               >
-                <MapPin className="w-5 h-5 text-orange-500 fill-orange-900/50" />
+                <BrandLogo size="md" />
                 Trade Manager
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed mb-5">

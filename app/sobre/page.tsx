@@ -1,6 +1,6 @@
 import { PageLayout } from "@/components/PageLayout";
+import { BrandLogo } from "@/components/BrandLogo";
 import {
-  MapPin,
   Smartphone,
   Monitor,
   Users,
@@ -56,7 +56,7 @@ export default function SobrePage() {
       <section className="bg-orange-50/60 py-16 border-b border-orange-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="w-5 h-5 text-orange-600 fill-orange-100" />
+            <BrandLogo size="md" />
             <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
               Empresa
             </span>

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
@@ -12,7 +12,7 @@ export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
             href="/"
             className="flex items-center gap-2 font-bold text-base text-gray-900"
           >
-            <MapPin className="w-4 h-4 text-orange-600 fill-orange-100" />
+            <BrandLogo size="sm" />
             Trade Manager
           </Link>
           <Link

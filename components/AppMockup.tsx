@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 interface NavItem {
   label: string;
@@ -116,8 +117,12 @@ export function AppMockup({
             fontWeight: 700,
             fontSize: "0.78rem",
             letterSpacing: "0.04em",
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
           }}
         >
+          <BrandLogo size="sm" className="rounded-sm" />
           TRADE MANAGER
         </span>
         <span
