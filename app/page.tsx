@@ -319,17 +319,36 @@ const FOOTER_COLUMNS = [
     ],
   },
   {
+    title: "Soluções",
+    links: [
+      {
+        label: "Gestão de Promotores",
+        href: "/software-gestao-promotores",
+      },
+      {
+        label: "App para Promotor",
+        href: "/aplicativo-para-promotor-de-vendas",
+      },
+      {
+        label: "Trade Marketing",
+        href: "/software-de-trade-marketing",
+      },
+      {
+        label: "Roteirização",
+        href: "/roteirizacao-de-promotores",
+      },
+      { label: "Check-in GPS", href: "/check-in-gps-pdv" },
+      {
+        label: "Controle de Validade",
+        href: "/controle-de-validade-pdv",
+      },
+    ],
+  },
+  {
     title: "Empresa",
     links: [
       { label: "Sobre Nós", href: "/sobre" },
       { label: "Parceiros", href: "/parceiros" },
-    ],
-  },
-  {
-    title: "Suporte",
-    links: [
-      { label: "Central de Ajuda", href: "#" },
-      { label: "Documentação", href: "#" },
       { label: "Fale Conosco", href: "/#contato" },
     ],
   },
@@ -439,15 +458,16 @@ export default function LandingPage() {
           <div className="text-center mb-10">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-300 bg-orange-50 text-orange-700 text-xs font-semibold mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
-              Sistema de Trade Marketing
+              Software de Trade Marketing
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              Gestão completa de{" "}
+              Software de gestão de{" "}
               <span className="text-orange-500">promotores de vendas</span>
             </h1>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Tenha controle total sobre sua equipe de campo. Gerencie visitas,
-              estoque, rotas e desempenho em tempo real com o Trade Manager.
+              estoque, rotas e desempenho em tempo real com o Trade Manager —
+              plataforma web e aplicativo para promotores.
             </p>
           </div>
 
@@ -792,8 +812,8 @@ export default function LandingPage() {
                 Trade Manager
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                A solução completa para gestão de promotores de vendas em Trade
-                Marketing.
+                Software de Trade Marketing para gestão de promotores de vendas
+                em campo.
               </p>
               <div className="flex gap-3">
                 <a

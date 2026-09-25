@@ -3,10 +3,11 @@ export const SITE_URL =
 
 export const SITE_NAME = "Trade Manager";
 
-export const SITE_TAGLINE = "Gestão completa de promotores de vendas";
+export const SITE_TAGLINE =
+  "Software de gestão de promotores de vendas";
 
 export const DEFAULT_DESCRIPTION =
-  "Tenha controle total sobre sua equipe de campo. Gerencie visitas, estoque, rotas e desempenho em tempo real com o Trade Manager.";
+  "Software de Trade Marketing para gestão de promotores de vendas. Roteiros, check-in GPS, estoque e desempenho em tempo real com o Trade Manager.";
 
 export const ORGANIZATION = {
   legalName: "Trade Manager Soluções em Trade Marketing Ltda.",
@@ -34,6 +35,54 @@ export const SITE_PAGES = [
     description: DEFAULT_DESCRIPTION,
     changeFrequency: "weekly" as const,
     priority: 1,
+  },
+  {
+    path: "/software-gestao-promotores",
+    title: "Software de Gestão de Promotores",
+    description:
+      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade Manager.",
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  },
+  {
+    path: "/aplicativo-para-promotor-de-vendas",
+    title: "Aplicativo para Promotor de Vendas",
+    description:
+      "Aplicativo para promotor de vendas com roteiro do dia, check-in GPS, foto obrigatória e conferência de produtos. App Trade+ na App Store e Google Play.",
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  },
+  {
+    path: "/software-de-trade-marketing",
+    title: "Software de Trade Marketing",
+    description:
+      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade Manager.",
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  },
+  {
+    path: "/roteirizacao-de-promotores",
+    title: "Roteirização de Promotores",
+    description:
+      "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade Manager.",
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  },
+  {
+    path: "/check-in-gps-pdv",
+    title: "Check-in GPS no PDV",
+    description:
+      "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade Manager.",
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  },
+  {
+    path: "/controle-de-validade-pdv",
+    title: "Controle de Validade no PDV",
+    description:
+      "Controle de validade no PDV com filtros por criticidade, conferência de produtos e registro de lote. Reduza perdas com o app Trade+.",
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
   },
   {
     path: "/sobre",
