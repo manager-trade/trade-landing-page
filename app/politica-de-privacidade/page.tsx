@@ -1,7 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
-  title: "Política de Privacidade — Trade Manager",
+  title: "Política de Privacidade",
+  description:
+    "Política de Privacidade da Trade Manager: como coletamos, usamos e protegemos dados pessoais no Trade+.",
+  alternates: { canonical: "/politica-de-privacidade" },
+  openGraph: {
+    title: "Política de Privacidade | Trade Manager",
+    description:
+      "Política de Privacidade da Trade Manager: como coletamos, usamos e protegemos dados pessoais no Trade+.",
+    url: "/politica-de-privacidade",
+  },
 };
 
 const sections = [
