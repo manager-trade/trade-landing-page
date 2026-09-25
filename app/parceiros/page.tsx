@@ -1,7 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
-  title: "Parceiros — Trade Manager",
+  title: "Parceiros",
+  description:
+    "Programa de parceiros da Trade Manager. Em breve, oportunidades para empresas e profissionais de Trade Marketing no Brasil.",
+  alternates: { canonical: "/parceiros" },
+  openGraph: {
+    title: "Parceiros | Trade Manager",
+    description:
+      "Programa de parceiros da Trade Manager. Em breve, oportunidades para empresas e profissionais de Trade Marketing no Brasil.",
+    url: "/parceiros",
+  },
 };
 
 export default function ParceirosPage() {

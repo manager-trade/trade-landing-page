@@ -10,7 +10,16 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Sobre Nós — Trade Manager",
+  title: "Sobre Nós",
+  description:
+    "Conheça a Trade Manager: empresa brasileira de tecnologia para Trade Marketing, com foco em gestão de promotores de vendas em campo.",
+  alternates: { canonical: "/sobre" },
+  openGraph: {
+    title: "Sobre Nós | Trade Manager",
+    description:
+      "Conheça a Trade Manager: empresa brasileira de tecnologia para Trade Marketing, com foco em gestão de promotores de vendas em campo.",
+    url: "/sobre",
+  },
 };
 
 const values = [

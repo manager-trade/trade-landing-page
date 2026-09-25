@@ -1,7 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
-  title: "LGPD — Trade Manager",
+  title: "LGPD",
+  description:
+    "Como a Trade Manager se adequa à LGPD (Lei Geral de Proteção de Dados) e quais são os direitos dos titulares.",
+  alternates: { canonical: "/lgpd" },
+  openGraph: {
+    title: "LGPD | Trade Manager",
+    description:
+      "Como a Trade Manager se adequa à LGPD (Lei Geral de Proteção de Dados) e quais são os direitos dos titulares.",
+    url: "/lgpd",
+  },
 };
 
 const sections = [

@@ -1,7 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
-  title: "Termos de Uso — Trade Manager",
+  title: "Termos de Uso",
+  description:
+    "Termos de Uso do Trade Manager e do produto Trade+: regras de utilização da plataforma web e do aplicativo móvel.",
+  alternates: { canonical: "/termos" },
+  openGraph: {
+    title: "Termos de Uso | Trade Manager",
+    description:
+      "Termos de Uso do Trade Manager e do produto Trade+: regras de utilização da plataforma web e do aplicativo móvel.",
+    url: "/termos",
+  },
 };
 
 const sections = [
