@@ -12,8 +12,6 @@ import {
   Package,
   LogOut,
   CheckCircle2,
-  Clock,
-  ScanLine,
 } from "lucide-react";
 
 /* ─── Screen definitions ─────────────────────────────────── */
@@ -164,7 +162,6 @@ function HomeScreen() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  shrink: 0,
                   flexShrink: 0,
                 }}
               >
