@@ -5,6 +5,13 @@ import { PageLayout } from "@/components/PageLayout";
 import { JsonLd } from "@/components/JsonLd";
 import type { SeoPageContent } from "@/lib/seo-pages";
 import { absoluteUrl, SITE_NAME } from "@/lib/seo";
+import {
+  LOGIN_URL,
+  REGISTER_URL,
+  TRIAL_LABEL,
+  TRIAL_NOTE,
+  WHATSAPP_URL,
+} from "@/lib/links";
 
 export function buildSeoPageMetadata(page: SeoPageContent): Metadata {
   return {
@@ -71,20 +78,21 @@ export function SeoSolutionPage({ page }: { page: SeoPageContent }) {
           <p className="text-gray-600 leading-relaxed text-lg">{page.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://web.trademanager.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={REGISTER_URL}
               className="inline-flex items-center px-6 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
             >
-              Acessar Sistema
+              Começar teste grátis
             </a>
-            <Link
-              href="/#contato"
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
             >
-              Falar com a equipe
-            </Link>
+              Falar no WhatsApp
+            </a>
           </div>
+          <p className="mt-3 text-sm text-gray-500">{TRIAL_NOTE}</p>
         </div>
       </section>
 
@@ -192,13 +200,17 @@ export function SeoSolutionPage({ page }: { page: SeoPageContent }) {
             {page.ctaDesc}
           </p>
           <a
-            href="https://web.trademanager.com.br/login"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={REGISTER_URL}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
           >
-            Acessar Sistema
+            {TRIAL_LABEL}
           </a>
+          <p className="mt-3 text-sm text-gray-500">
+            Sem cartão de crédito. Já é cliente?{" "}
+            <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
+              Entrar
+            </a>
+          </p>
         </section>
       </div>
     </PageLayout>
