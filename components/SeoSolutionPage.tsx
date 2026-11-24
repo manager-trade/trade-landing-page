@@ -67,7 +67,7 @@ export function SeoSolutionPage({ page }: { page: SeoPageContent }) {
     <PageLayout>
       <JsonLd data={[buildWebPageJsonLd(page), buildFaqJsonLd(page)]} />
 
-      <section className="bg-orange-50/60 py-16 border-b border-orange-100">
+      <section className="bg-gray-50 py-16 border-b border-orange-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
             {page.eyebrow}
