@@ -5,6 +5,15 @@ import { MobileMockup } from "@/components/MobileMockup";
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  LOGIN_URL,
+  REGISTER_URL,
+  TRIAL_LABEL,
+  TRIAL_NOTE,
+  WHATSAPP_URL,
+} from "@/lib/links";
+import {
   Menu,
   X,
   LogIn,
@@ -17,11 +26,9 @@ import {
   ShieldCheck,
   CheckCircle2,
   Mail,
-  Phone,
+  MessageCircle,
   // eslint-disable-next-line deprecation/deprecation
   Instagram,
-  // eslint-disable-next-line deprecation/deprecation
-  Linkedin,
   // eslint-disable-next-line deprecation/deprecation
   Facebook,
 } from "lucide-react";
@@ -395,19 +402,17 @@ export default function LandingPage() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="#contato"
+            <a
+              href={LOGIN_URL}
               className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 transition-colors"
             >
-              Faça Contato
-            </Link>
+              Entrar
+            </a>
             <a
-              href="https://web.trademanager.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={REGISTER_URL}
               className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 transition-colors"
             >
-              Acessar Sistema
+              Teste grátis
             </a>
           </div>
 
@@ -439,13 +444,18 @@ export default function LandingPage() {
               </Link>
             ))}
             <a
-              href="https://web.trademanager.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={REGISTER_URL}
               className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Acessar Sistema
+              {TRIAL_LABEL}
+            </a>
+            <a
+              href={LOGIN_URL}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Entrar
             </a>
           </div>
         )}
@@ -458,7 +468,7 @@ export default function LandingPage() {
           <div className="text-center mb-10">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-300 bg-orange-50 text-orange-700 text-xs font-semibold mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
-              Software de Trade Marketing
+              {TRIAL_NOTE}
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
               Software de gestão de{" "}
@@ -497,20 +507,27 @@ export default function LandingPage() {
           {/* Bottom: CTA buttons — full width centered */}
           <div className="flex flex-wrap justify-center gap-3">
             <a
-              href="https://web.trademanager.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={REGISTER_URL}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
             >
-              Acessar Sistema
+              Começar teste grátis
             </a>
-            <Link
-              href="#funcionalidades"
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
             >
-              Conhecer Funcionalidades
-            </Link>
+              <MessageCircle className="w-4 h-4" />
+              Falar no WhatsApp
+            </a>
           </div>
+          <p className="mt-3 text-center text-sm text-gray-500">
+            {TRIAL_NOTE} Já é cliente?{" "}
+            <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
+              Entrar
+            </a>
+          </p>
         </div>
       </section>
 
@@ -756,14 +773,16 @@ export default function LandingPage() {
             </a>
 
             <a
-              href="tel:+559591390527"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                <Phone className="w-5 h-5 text-orange-600" />
+                <MessageCircle className="w-5 h-5 text-orange-600" />
               </div>
               <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                Telefone
+                WhatsApp
               </p>
               <p className="text-sm font-medium text-gray-800">
                 +55 (95) 99139-0527
@@ -778,22 +797,21 @@ export default function LandingPage() {
                 Atendimento
               </p>
               <p className="text-sm font-medium text-gray-800 text-center">
-                Seg–Sex: 9h às 18h
+                Horário comercial
                 <br />
-                Suporte Online 24h
+                Seg–Sex: 8h às 18h
               </p>
             </div>
           </div>
 
           <div className="mt-8">
             <a
-              href="https://web.trademanager.com.br/login"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={REGISTER_URL}
               className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
             >
-              Acessar Sistema
+              {TRIAL_LABEL}
             </a>
+            <p className="mt-3 text-sm text-gray-500">Sem cartão de crédito.</p>
           </div>
         </div>
       </section>
@@ -817,22 +835,31 @@ export default function LandingPage() {
               </p>
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram @trademais_"
                   className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a
-                  href="#"
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook Trademais"
                   className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
                 >
                   <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
                 </a>
               </div>
             </div>

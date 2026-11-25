@@ -23,6 +23,7 @@ export const ORGANIZATION = {
     addressCountry: "BR",
   },
   sameAs: [
+    "https://www.instagram.com/trademais_/",
     "https://apps.apple.com/br/app/trade/id6633411717",
     "https://play.google.com/store/apps/details?id=com.trademanager.tradeapp",
   ],
@@ -182,12 +183,6 @@ export function buildSoftwareApplicationJsonLd() {
     url: SITE_URL,
     image: absoluteUrl("/icon.png"),
     inLanguage: "pt-BR",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "BRL",
-      description: "Entre em contato para condições comerciais",
-    },
     publisher: {
       "@id": `${SITE_URL}/#organization`,
     },

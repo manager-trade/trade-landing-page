@@ -1,5 +1,6 @@
 import { PageLayout } from "@/components/PageLayout";
 import { BrandLogo } from "@/components/BrandLogo";
+import { REGISTER_URL, TRIAL_LABEL } from "@/lib/links";
 import {
   Smartphone,
   Monitor,
@@ -188,13 +189,12 @@ export default function SobrePage() {
             ajudar sua equipe.
           </p>
           <a
-            href="https://web.trademanager.com.br/login"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={REGISTER_URL}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
           >
-            Acessar Sistema
+            {TRIAL_LABEL}
           </a>
+          <p className="mt-3 text-sm text-gray-500">Sem cartão de crédito.</p>
         </section>
       </div>
     </PageLayout>

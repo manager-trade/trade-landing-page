@@ -61,9 +61,9 @@ Nenhuma disposição destes Termos concede ao Usuário qualquer direito sobre a 
   },
   {
     title: "7. Disponibilidade e Suporte",
-    content: `7.1. A Trade Manager envidarará esforços razoáveis para manter a plataforma disponível 24 horas por dia, 7 dias por semana, podendo haver interrupções para manutenções programadas, que serão comunicadas com antecedência sempre que possível.
+    content: `7.1. A Trade Manager envidará esforços razoáveis para manter a plataforma disponível 24 horas por dia, 7 dias por semana, podendo haver interrupções para manutenções programadas, que serão comunicadas com antecedência sempre que possível.
 
-7.2. O suporte técnico é prestado de segunda a sexta-feira, das 9h às 18h, e aos sábados, das 9h às 13h, por meio do canal suporte@trademanager.com.br. O suporte online está disponível 24 horas.`,
+7.2. O suporte técnico é prestado em horário comercial, de segunda a sexta-feira, das 8h às 18h, por meio do canal suporte@trademanager.com.br.`,
   },
   {
     title: "8. Limitação de Responsabilidade",
@@ -100,7 +100,7 @@ export default function TermosPage() {
             Termos de Uso
           </h1>
           <p className="mt-3 text-sm text-gray-500">
-            Última atualização: 1 de maio de 2026
+            Última atualização: 23 de novembro de 2026
           </p>
           <p className="mt-4 text-gray-600 leading-relaxed">
             Leia atentamente estes Termos de Uso antes de utilizar a plataforma
