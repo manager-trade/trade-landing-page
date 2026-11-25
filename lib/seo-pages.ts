@@ -35,15 +35,15 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     path: "/software-gestao-promotores",
     title: "Software de Gestão de Promotores",
     description:
-      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade Manager.",
+      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade+.",
     eyebrow: "Software para equipes de campo",
     h1: "Software de gestão de promotores de vendas",
     intro:
-      "O Trade Manager é um software de gestão de promotores feito para empresas de Trade Marketing que precisam acompanhar visitas, produtividade e execução no PDV sem planilhas.",
+      "O Trade+ é um software de gestão de promotores feito para empresas de Trade Marketing que precisam acompanhar visitas, produtividade e execução no PDV sem planilhas.",
     problemTitle: "Por que trocar planilhas por um software de promotores?",
     problem:
       "Quando a operação cresce, WhatsApp e Excel deixam de dar conta: falta prova de presença, roteiros se perdem e o gestor só descobre problemas depois da visita. Um software de gestão de promotores centraliza o planejado e o executado em um só lugar.",
-    benefitsTitle: "O que o Trade Manager controla",
+    benefitsTitle: "O que o Trade+ controla",
     benefits: [
       {
         icon: Navigation,
@@ -92,7 +92,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
           "É uma plataforma que organiza roteiros, visitas, presença no PDV e indicadores da equipe de Trade Marketing — no web e no celular.",
       },
       {
-        question: "O Trade Manager serve para agências e indústrias?",
+        question: "O Trade+ serve para agências e indústrias?",
         answer:
           "Sim. É voltado a operações que gerenciam promotores em campo, com painel para gestores e app para a equipe.",
       },
@@ -118,7 +118,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     ],
     ctaTitle: "Veja o software de gestão de promotores na prática",
     ctaDesc:
-      "Acesse o sistema ou fale com nossa equipe para entender como o Trade Manager se encaixa na sua operação.",
+      "Comece o teste grátis ou fale com nossa equipe para entender como o Trade+ se encaixa na sua operação.",
   },
   {
     path: "/aplicativo-para-promotor-de-vendas",
@@ -210,11 +210,11 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     path: "/software-de-trade-marketing",
     title: "Software de Trade Marketing",
     description:
-      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade Manager.",
+      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade+.",
     eyebrow: "Plataforma Trade+",
     h1: "Software de Trade Marketing",
     intro:
-      "O Trade Manager é um software de Trade Marketing que conecta a estratégia do backoffice à execução do promotor no ponto de venda — com dados auditáveis e visão em tempo real.",
+      "O Trade+ é um software de Trade Marketing que conecta a estratégia do backoffice à execução do promotor no ponto de venda — com dados auditáveis e visão em tempo real.",
     problemTitle: "Trade Marketing sem sistema vira achismo",
     problem:
       "Sem um software de Trade Marketing, a operação depende de relatos manuais. Fica difícil saber se a visita aconteceu, se o mix está correto e onde há risco de ruptura ou validade.",
@@ -241,7 +241,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
         desc: "Acompanhe desempenho, cobertura e histórico de visitas.",
       },
     ],
-    howTitle: "Para quem é o Trade Manager",
+    howTitle: "Para quem é o Trade+",
     howSteps: [
       {
         title: "Agências de Trade Marketing",
@@ -291,7 +291,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
         label: "Roteirização de promotores",
       },
     ],
-    ctaTitle: "Conheça o software de Trade Marketing da Trade Manager",
+    ctaTitle: "Conheça o Trade+, o software de Trade Marketing da Trade Manager",
     ctaDesc:
       "Veja como o Trade+ organiza visitas, produtos e indicadores da sua operação.",
   },
@@ -299,11 +299,11 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     path: "/roteirizacao-de-promotores",
     title: "Roteirização de Promotores",
     description:
-      "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade Manager.",
+      "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade+.",
     eyebrow: "Planejamento de campo",
     h1: "Roteirização de promotores",
     intro:
-      "A roteirização de promotores no Trade Manager ajuda a planejar quem visita qual loja, em qual ordem, e a conferir se o roteiro do dia foi cumprido — no painel e no aplicativo.",
+      "A roteirização de promotores no Trade+ ajuda a planejar quem visita qual loja, em qual ordem, e a conferir se o roteiro do dia foi cumprido — no painel e no aplicativo.",
     problemTitle: "Roteiro mal feito custa deslocamento e cobertura",
     problem:
       "Sem roteirização de promotores clara, a equipe perde tempo no deslocamento, deixa PDVs descobertos e o gestor não sabe se o plano do dia foi executado.",
@@ -358,7 +358,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
       {
         question: "A roteirização fica só no mapa?",
         answer:
-          "No Trade Manager, o roteiro vira operação: o promotor executa no app e o gestor acompanha a realização das visitas.",
+          "No Trade+, o roteiro vira operação: o promotor executa no app e o gestor acompanha a realização das visitas.",
       },
       {
         question: "Posso ajustar rotas com frequência?",
@@ -385,7 +385,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     path: "/check-in-gps-pdv",
     title: "Check-in GPS no PDV",
     description:
-      "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade Manager.",
+      "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade+.",
     eyebrow: "Presença auditável",
     h1: "Check-in GPS no PDV",
     intro:
@@ -478,7 +478,7 @@ export const SEO_SOLUTION_PAGES: SeoPageContent[] = [
     eyebrow: "Prevenção de perdas",
     h1: "Controle de validade no PDV",
     intro:
-      "O controle de validade no PDV com o Trade Manager ajuda promotores e gestores a identificar itens críticos, registrar lote/validade e agir antes da perda — direto na visita.",
+      "O controle de validade no PDV com o Trade+ ajuda promotores e gestores a identificar itens críticos, registrar lote/validade e agir antes da perda — direto na visita.",
     problemTitle: "Validade fora de controle vira prejuízo",
     problem:
       "Sem processo digital de controle de validade no PDV, produtos vencem na gôndola, a reposição falha e a operação só descobre o problema quando o dano já ocorreu.",

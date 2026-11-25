@@ -63,10 +63,10 @@ export default function SobrePage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="bg-orange-50/60 py-16 border-b border-orange-100">
+      <section className="bg-gray-50 py-16 border-b border-orange-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <BrandLogo size="md" />
+            <BrandLogo variant="simbolo" height={26} />
             <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
               Empresa
             </span>
@@ -185,7 +185,7 @@ export default function SobrePage() {
             Pronto para transformar sua operação?
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Conheça a plataforma e veja na prática como o Trade Manager pode
+            Conheça a plataforma e veja na prática como o Trade+ pode
             ajudar sua equipe.
           </p>
           <a

@@ -1,13 +1,17 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.trademanager.com.br";
 
-export const SITE_NAME = "Trade Manager";
+/** Nome do produto (MIV v1.0): o site vende o Trade+. */
+export const SITE_NAME = "Trade+";
+
+/** Empresa que assina (razão social em ORGANIZATION.legalName). */
+export const COMPANY_NAME = "Trade Manager";
 
 export const SITE_TAGLINE =
   "Software de gestão de promotores de vendas";
 
 export const DEFAULT_DESCRIPTION =
-  "Software de Trade Marketing para gestão de promotores de vendas. Roteiros, check-in GPS, estoque e desempenho em tempo real com o Trade Manager.";
+  "Software de Trade Marketing para gestão de promotores de vendas. Roteiros, check-in GPS, estoque e desempenho em tempo real com o Trade+.";
 
 export const ORGANIZATION = {
   legalName: "Trade Manager Soluções em Trade Marketing Ltda.",
@@ -41,7 +45,7 @@ export const SITE_PAGES = [
     path: "/software-gestao-promotores",
     title: "Software de Gestão de Promotores",
     description:
-      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade Manager.",
+      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade+.",
     changeFrequency: "monthly" as const,
     priority: 0.9,
   },
@@ -57,7 +61,7 @@ export const SITE_PAGES = [
     path: "/software-de-trade-marketing",
     title: "Software de Trade Marketing",
     description:
-      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade Manager.",
+      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade+.",
     changeFrequency: "monthly" as const,
     priority: 0.9,
   },
@@ -65,7 +69,7 @@ export const SITE_PAGES = [
     path: "/roteirizacao-de-promotores",
     title: "Roteirização de Promotores",
     description:
-      "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade Manager.",
+      "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade+.",
     changeFrequency: "monthly" as const,
     priority: 0.85,
   },
@@ -73,7 +77,7 @@ export const SITE_PAGES = [
     path: "/check-in-gps-pdv",
     title: "Check-in GPS no PDV",
     description:
-      "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade Manager.",
+      "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade+.",
     changeFrequency: "monthly" as const,
     priority: 0.85,
   },
@@ -137,10 +141,10 @@ export function buildOrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
-    name: SITE_NAME,
+    name: COMPANY_NAME,
     legalName: ORGANIZATION.legalName,
     url: SITE_URL,
-    logo: absoluteUrl("/icon.png"),
+    logo: absoluteUrl("/icon-512.png"),
     email: ORGANIZATION.email,
     telephone: ORGANIZATION.phone,
     taxID: ORGANIZATION.cnpj,
@@ -176,12 +180,12 @@ export function buildSoftwareApplicationJsonLd() {
     "@type": "SoftwareApplication",
     "@id": `${SITE_URL}/#software`,
     name: "Trade+",
-    alternateName: SITE_NAME,
+    alternateName: COMPANY_NAME,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web, iOS, Android",
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
-    image: absoluteUrl("/icon.png"),
+    image: absoluteUrl("/icon-512.png"),
     inLanguage: "pt-BR",
     publisher: {
       "@id": `${SITE_URL}/#organization`,
