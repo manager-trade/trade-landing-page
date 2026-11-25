@@ -1,3 +1,4 @@
+import { OG_IMAGE } from "@/lib/seo";
 import { PageLayout } from "@/components/PageLayout";
 import { BrandLogo } from "@/components/BrandLogo";
 import { REGISTER_URL, TRIAL_LABEL } from "@/lib/links";
@@ -20,6 +21,11 @@ export const metadata = {
     description:
       "Conheça a Trade Manager: empresa brasileira de tecnologia para Trade Marketing, com foco em gestão de promotores de vendas em campo.",
     url: "/sobre",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 

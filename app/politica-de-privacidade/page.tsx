@@ -1,3 +1,4 @@
+import { OG_IMAGE } from "@/lib/seo";
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
@@ -10,6 +11,11 @@ export const metadata = {
     description:
       "Política de Privacidade da Trade Manager: como coletamos, usamos e protegemos dados pessoais no Trade+.",
     url: "/politica-de-privacidade",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 

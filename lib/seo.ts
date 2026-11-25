@@ -215,3 +215,15 @@ export function buildWebSiteJsonLd() {
     },
   };
 }
+
+/**
+ * Imagem de compartilhamento oficial (MIV v1.0, pacote 3_Web).
+ * Páginas que definem `openGraph` próprio substituem a imagem do layout,
+ * então precisam repetir esta referência.
+ */
+export const OG_IMAGE = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Trade+: software de gestão de promotores e do PDV. Mais controle. Mais resultado.",
+};

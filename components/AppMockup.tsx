@@ -102,13 +102,14 @@ export function AppMockup({
         backgroundColor: "#F3F4F6",
       }}
     >
-      {/* Sidebar escura — espelha AppShell atual */}
+      {/* Sidebar escura — espelha AppShell atual (grafite #111827). Some no celular
+          para a tabela caber inteira. */}
       <div
+        className="hidden sm:flex"
         style={{
           width: "168px",
-          backgroundColor: "#1E293B",
+          backgroundColor: "#111827",
           color: "#F8FAFC",
-          display: "flex",
           flexDirection: "column",
           flexShrink: 0,
         }}

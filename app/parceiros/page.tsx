@@ -1,3 +1,4 @@
+import { OG_IMAGE } from "@/lib/seo";
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
@@ -10,6 +11,11 @@ export const metadata = {
     description:
       "Programa de parceiros da Trade Manager. Em breve, oportunidades para empresas e profissionais de Trade Marketing no Brasil.",
     url: "/parceiros",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 
