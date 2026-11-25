@@ -27,9 +27,7 @@ import {
   CheckCircle2,
   Mail,
   MessageCircle,
-  // eslint-disable-next-line deprecation/deprecation
   Instagram,
-  // eslint-disable-next-line deprecation/deprecation
   Facebook,
 } from "lucide-react";
 import {
@@ -85,13 +83,6 @@ const FEATURES = [
     title: "Segurança de Dados",
     desc: "Dados protegidos com criptografia e backups automáticos na nuvem.",
   },
-];
-
-const STATS = [
-  { value: "98%", label: "Aumento na produtividade" },
-  { value: "+500", label: "Empresas atendidas" },
-  { value: "10k+", label: "Promotores cadastrados" },
-  { value: "24/7", label: "Suporte disponível" },
 ];
 
 const PLATFORM_FEATURES = [
@@ -566,20 +557,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* ── STATS ────────────────────────────────────────────────── */}
-      {/* <section className="bg-orange-600 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center">
-            {STATS.map((s) => (
-              <div key={s.value}>
-                <p className="text-4xl sm:text-5xl font-extrabold">{s.value}</p>
-                <p className="mt-1 text-sm text-orange-100">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ── WEB PLATFORM ─────────────────────────────────────────── */}
       <section id="plataforma" className="py-20 bg-gray-50">
