@@ -28,25 +28,36 @@ export const ORGANIZATION = {
   },
   sameAs: [
     "https://www.instagram.com/trademais_/",
+    "https://www.facebook.com/share/1JXwAzdu1Y/",
     "https://apps.apple.com/br/app/trade/id6633411717",
     "https://play.google.com/store/apps/details?id=com.trademanager.tradeapp",
   ],
 } as const;
 
-export const SITE_PAGES = [
+type SitePage = {
+  path: string;
+  title: string;
+  description: string;
+  changeFrequency: "weekly" | "monthly" | "yearly";
+  priority: number;
+  /** Páginas finas / placeholder — fora do sitemap e com noindex na rota. */
+  noindex?: boolean;
+};
+
+export const SITE_PAGES: readonly SitePage[] = [
   {
     path: "/",
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description: DEFAULT_DESCRIPTION,
-    changeFrequency: "weekly" as const,
+    changeFrequency: "weekly",
     priority: 1,
   },
   {
     path: "/software-gestao-promotores",
     title: "Software de Gestão de Promotores",
     description:
-      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no PDV e relatórios em tempo real. Conheça o Trade+.",
-    changeFrequency: "monthly" as const,
+      "Software de gestão de promotores de vendas com roteiros, check-in GPS, estoque no ponto de venda e relatórios em tempo real. Conheça o Trade+.",
+    changeFrequency: "monthly",
     priority: 0.9,
   },
   {
@@ -54,15 +65,15 @@ export const SITE_PAGES = [
     title: "Aplicativo para Promotor de Vendas",
     description:
       "Aplicativo para promotor de vendas com roteiro do dia, check-in GPS, foto obrigatória e conferência de produtos. App Trade+ na App Store e Google Play.",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.9,
   },
   {
     path: "/software-de-trade-marketing",
     title: "Software de Trade Marketing",
     description:
-      "Software de Trade Marketing para gestão de promotores, execução no PDV, roteiros e indicadores. Plataforma web + app com o Trade+.",
-    changeFrequency: "monthly" as const,
+      "Software de Trade Marketing para gestão de promotores, execução no ponto de venda, roteiros e indicadores. Plataforma web + app com o Trade+.",
+    changeFrequency: "monthly",
     priority: 0.9,
   },
   {
@@ -70,7 +81,7 @@ export const SITE_PAGES = [
     title: "Roteirização de Promotores",
     description:
       "Roteirização de promotores com cadastro de rotas, visitas programadas e acompanhamento da execução no app. Otimize a cobertura de PDVs com o Trade+.",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.85,
   },
   {
@@ -78,7 +89,7 @@ export const SITE_PAGES = [
     title: "Check-in GPS no PDV",
     description:
       "Check-in e check-out com GPS e foto no PDV para validar presença do promotor. Controle de visitas em tempo real com o Trade+.",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.85,
   },
   {
@@ -86,7 +97,7 @@ export const SITE_PAGES = [
     title: "Controle de Validade no PDV",
     description:
       "Controle de validade no PDV com filtros por criticidade, conferência de produtos e registro de lote. Reduza perdas com o app Trade+.",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.85,
   },
   {
@@ -94,7 +105,7 @@ export const SITE_PAGES = [
     title: "Sobre Nós",
     description:
       "Conheça a Trade Manager: empresa brasileira de tecnologia para Trade Marketing, com foco em gestão de promotores de vendas em campo.",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   },
   {
@@ -102,15 +113,16 @@ export const SITE_PAGES = [
     title: "Parceiros",
     description:
       "Programa de parceiros da Trade Manager. Em breve, oportunidades para empresas e profissionais de Trade Marketing no Brasil.",
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
+    changeFrequency: "monthly",
+    priority: 0.3,
+    noindex: true,
   },
   {
     path: "/termos",
     title: "Termos de Uso",
     description:
       "Termos de Uso do Trade Manager e do produto Trade+: regras de utilização da plataforma web e do aplicativo móvel.",
-    changeFrequency: "yearly" as const,
+    changeFrequency: "yearly",
     priority: 0.3,
   },
   {
@@ -118,7 +130,7 @@ export const SITE_PAGES = [
     title: "Política de Privacidade",
     description:
       "Política de Privacidade da Trade Manager: como coletamos, usamos e protegemos dados pessoais no Trade+.",
-    changeFrequency: "yearly" as const,
+    changeFrequency: "yearly",
     priority: 0.3,
   },
   {
@@ -126,10 +138,10 @@ export const SITE_PAGES = [
     title: "LGPD",
     description:
       "Como a Trade Manager se adequa à LGPD (Lei Geral de Proteção de Dados) e quais são os direitos dos titulares.",
-    changeFrequency: "yearly" as const,
+    changeFrequency: "yearly",
     priority: 0.3,
   },
-] as const;
+];
 
 export function absoluteUrl(path = "/"): string {
   if (path === "/") return SITE_URL;
@@ -179,24 +191,37 @@ export function buildSoftwareApplicationJsonLd() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": `${SITE_URL}/#software`,
-    name: "Trade+",
-    alternateName: COMPANY_NAME,
+    name: SITE_NAME,
+    alternateName: [COMPANY_NAME, "Trade Mais"],
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web, iOS, Android",
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
     image: absoluteUrl("/icon-512.png"),
     inLanguage: "pt-BR",
+    offers: {
+      "@type": "Offer",
+      url: absoluteUrl("/"),
+      priceCurrency: "BRL",
+      availability: "https://schema.org/OnlineOnly",
+      description:
+        "Teste grátis disponível. Condições comerciais sob consulta.",
+    },
     publisher: {
       "@id": `${SITE_URL}/#organization`,
+    },
+    brand: {
+      "@type": "Brand",
+      name: SITE_NAME,
     },
     featureList: [
       "Check-in e check-out com geolocalização",
       "Roteirização de visitas",
-      "Controle de estoque no PDV",
+      "Controle de estoque no ponto de venda",
       "Relatórios e indicadores de desempenho",
       "Conferência de produtos por código de barras",
       "Gestão de validade",
+      "Gestão de promotores de vendas",
     ],
   };
 }

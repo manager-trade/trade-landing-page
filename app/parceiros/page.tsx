@@ -6,6 +6,10 @@ export const metadata = {
   description:
     "Programa de parceiros da Trade Manager. Em breve, oportunidades para empresas e profissionais de Trade Marketing no Brasil.",
   alternates: { canonical: "/parceiros" },
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "Parceiros | Trade Manager",
     description:

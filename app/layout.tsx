@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -14,10 +14,10 @@ import {
 } from "@/lib/seo";
 import "@/styles/globals.css";
 
-const poppins = Poppins({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-archivo",
 });
 
 export const metadata: Metadata = {
@@ -33,13 +33,14 @@ export const metadata: Metadata = {
   publisher: COMPANY_NAME,
   category: "business",
   keywords: [
-    "Trade Manager",
     "Trade+",
+    "Trade Manager",
     "trade marketing",
     "gestão de promotores",
     "promotores de vendas",
     "roteirização de visitas",
     "check-in PDV",
+    "ponto de venda",
     "controle de estoque",
     "software trade marketing",
     "aplicativo promotor",
@@ -93,7 +94,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#EA580C",
+  themeColor: "#0b1220",
 };
 
 export default function RootLayout({
@@ -102,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={poppins.variable}>
+    <html lang="pt-BR" className={archivo.variable}>
       <body className="antialiased font-sans">
         <JsonLd
           data={[

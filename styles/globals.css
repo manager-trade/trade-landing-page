@@ -28,6 +28,18 @@
 }
 
 :root {
+  --brand: #ea580c;
+  --brand-strong: #c2410c;
+  --brand-ink: #9a3412;
+  --confirm: #16a34a;
+  --confirm-soft: #dcfce7;
+  --map: #0b1220;
+  --map-panel: #111827;
+  --map-line: rgba(234, 88, 12, 0.55);
+  --ink: #0f172a;
+  --ink-muted: #94a3b8;
+  --paper: #f6f5f3;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -99,7 +111,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-poppins), sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -145,5 +157,77 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--brand) 35%, white);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility map-ground {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(234, 88, 12, 0.22), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 90% 30%, rgba(22, 163, 74, 0.12), transparent 50%),
+    linear-gradient(165deg, #0b1220 0%, #111827 45%, #0f172a 100%);
+}
+
+@utility route-draw {
+  stroke-dasharray: 8 10;
+  animation: route-dash 28s linear infinite;
+}
+
+@utility pin-pulse {
+  animation: pin-pulse 2.8s ease-out infinite;
+}
+
+@utility reveal-up {
+  animation: reveal-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes pin-pulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-draw,
+  .pin-pulse,
+  .reveal-up {
+    animation: none !important;
   }
 }

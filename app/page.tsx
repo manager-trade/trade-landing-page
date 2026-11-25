@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { MobileMockup } from "@/components/MobileMockup";
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
+import { BrandMark } from "@/components/BrandMark";
+import {
+  WebPanelMock,
+  WebPanelMini,
+  PhoneRoteiroMock,
+  PhoneCheckinMock,
+} from "@/components/ProductMocks";
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
@@ -16,330 +21,89 @@ import {
 import {
   Menu,
   X,
-  LogIn,
-  BarChart2,
-  Navigation,
-  Package,
-  TrendingUp,
-  Clock,
-  LayoutGrid,
-  ShieldCheck,
-  CheckCircle2,
+  ArrowRight,
+  MapPin,
+  Camera,
+  Route,
+  BarChart3,
   Mail,
-  MessageCircle,
+  Phone,
+  Clock,
   Instagram,
   Facebook,
+  MessageCircle,
 } from "lucide-react";
-import {
-  AppMockup,
-  StatusBadge,
-  type AppMockupProps,
-} from "@/components/AppMockup";
-const NAV_LINKS = [
-  { label: "Funcionalidades", href: "#funcionalidades" },
-  { label: "Plataforma Web", href: "#plataforma" },
-  { label: "App Mobile", href: "#mobile" },
+
+const NAV = [
+  { label: "Como funciona", href: "#rota" },
+  { label: "Web", href: "#web" },
+  { label: "App", href: "#app" },
   { label: "Contato", href: "#contato" },
 ];
 
-const FEATURES = [
+/** Fluxo real: route-plans (web) → /routes/list (app) → checkin/checkout foto+GPS → visitas/relatórios */
+const ROUTE_STOPS = [
   {
-    icon: <LogIn className="w-6 h-6 text-orange-600" />,
-    title: "Check-in e Check-out",
-    desc: "Controle preciso de entrada e saída nos estabelecimentos com geolocalização em tempo real.",
+    pin: "01",
+    title: "Planejar",
+    desc: "Organize promotores, roteiros e pontos de venda no painel — quem visita qual loja, em qual dia.",
+    icon: Route,
   },
   {
-    icon: <BarChart2 className="w-6 h-6 text-orange-600" />,
-    title: "Relatório de Visitas",
-    desc: "Acompanhe todas as visitas realizadas com detalhes completos e informações importantes.",
+    pin: "02",
+    title: "Executar",
+    desc: "O promotor segue o roteiro no app, loja a loja, com status pendente, em andamento e concluída.",
+    icon: MapPin,
   },
   {
-    icon: <Navigation className="w-6 h-6 text-orange-600" />,
-    title: "Roteirização Inteligente",
-    desc: "Cadastre e otimize rotas dos seus promotores para maximizar a cobertura e a eficiência.",
+    pin: "03",
+    title: "Evidenciar",
+    desc: "Check-in e check-out com foto e GPS no ponto de venda. Fotos do antes e depois e checklist de execução.",
+    icon: Camera,
   },
   {
-    icon: <Package className="w-6 h-6 text-orange-600" />,
-    title: "Controle de Estoque",
-    desc: "Monitore o estoque em cada ponto de venda e tenha sempre o registro atualizado.",
-  },
-  {
-    icon: <TrendingUp className="w-6 h-6 text-orange-600" />,
-    title: "Indicadores de Desempenho",
-    desc: "Dashboard completo com KPIs para avaliar a performance da equipe.",
-  },
-  {
-    icon: <Clock className="w-6 h-6 text-orange-600" />,
-    title: "Gestão de Tempo",
-    desc: "Organize a agenda e o tempo gasto de cada promotor em cada visita.",
-  },
-  {
-    icon: <LayoutGrid className="w-6 h-6 text-orange-600" />,
-    title: "Mix de Produtos",
-    desc: "Controle o mix de produtos em cada estabelecimento de forma simples e automatizada.",
-  },
-  {
-    icon: <ShieldCheck className="w-6 h-6 text-orange-600" />,
-    title: "Segurança de Dados",
-    desc: "Dados protegidos com criptografia e backups automáticos na nuvem.",
+    pin: "04",
+    title: "Medir",
+    desc: "Acompanhe a equipe de promotores: visitas, desempenho, validade e estoque no painel web.",
+    icon: BarChart3,
   },
 ];
 
-const PLATFORM_FEATURES = [
-  "Dashboard com visão geral da operação",
-  "Gestão de visitas e promotores",
-  "Relatórios detalhados e exportáveis",
-  "Cadastro e gerenciamento de rotas",
-  "Controle de estoque por estabelecimento",
-  "Análise de desempenho em tempo real",
+const WEB_POINTS = [
+  "Gestão de promotores, perfis e equipe de campo",
+  "Roteiros semanais e cobertura dos pontos de venda",
+  "Visitas com resumo, fotos e checkout do supervisor",
+  "Lojas, produtos e relatórios de validade e estoque",
 ];
 
-const PLATFORM_TABS = [
-  { label: "Visitas" },
-  { label: "Lojas" },
-  { label: "Produtos" },
-];
-
-/** Nav condensada do mock — espelha trade-gestao-web (sidebar atual). */
-const NAV_ITEMS = (active: string) => [
-  { label: "Painel", section: "Principal" },
-  { label: "Dashboard" },
-  { label: "Desempenho" },
-  { label: "Lançamentos" },
-  { label: "Rotas", section: "Roteiro" },
-  { label: "Visitas", active: active === "Visitas" },
-  { label: "Produtos", section: "Administração", active: active === "Produtos" },
-  { label: "Categorias" },
-  { label: "Lojas", active: active === "Lojas" },
-  { label: "Usuários" },
-  { label: "Relatórios" },
-  { label: "Configurações", section: "Conta" },
-];
-
-const MOCKUP_CONFIGS: AppMockupProps[] = [
-  // 0 — Visitas (hero + tab padrão)
-  {
-    navItems: NAV_ITEMS("Visitas"),
-    breadcrumb: "Roteiro / Visitas",
-    title: "Visitas",
-    buttonLabel: "Filtrar",
-    columns: [
-      { key: "loja", label: "Loja" },
-      { key: "promotor", label: "Promotor" },
-      { key: "rota", label: "Rota" },
-      { key: "data", label: "Data" },
-      { key: "status", label: "Status" },
-    ],
-    rows: [
-      {
-        loja: "Aliança Express",
-        promotor: "Carlos Fonseca",
-        rota: "Zona Oeste",
-        data: "25/09/2026",
-        status: <StatusBadge label="Em andamento" variant="orange" />,
-      },
-      {
-        loja: "Boa Esperança Max",
-        promotor: "Ana Oliveira",
-        rota: "Centro",
-        data: "25/09/2026",
-        status: <StatusBadge label="Concluída" />,
-      },
-      {
-        loja: "União Alimentos",
-        promotor: "Pedro Santos",
-        rota: "Boa Vista",
-        data: "24/09/2026",
-        status: <StatusBadge label="Concluída" />,
-      },
-      {
-        loja: "São Pedro Express",
-        promotor: "Juliana Lopes",
-        rota: "Matutina",
-        data: "24/09/2026",
-        status: <StatusBadge label="Pendente" variant="gray" />,
-      },
-      {
-        loja: "Global Foods",
-        promotor: "Fernando Costa",
-        rota: "Vespertina",
-        data: "23/09/2026",
-        status: <StatusBadge label="Concluída" />,
-      },
-    ],
-  },
-  // 1 — Lojas
-  {
-    navItems: NAV_ITEMS("Lojas"),
-    breadcrumb: "Administração / Lojas",
-    title: "Lojas",
-    buttonLabel: "+ Loja",
-    columns: [
-      { key: "fantasia", label: "Fantasia" },
-      { key: "cidade", label: "Cidade" },
-      { key: "uf", label: "UF" },
-      { key: "rede", label: "Rede" },
-      { key: "status", label: "Situação" },
-    ],
-    rows: [
-      {
-        fantasia: "Aliança Express",
-        cidade: "Boa Vista",
-        uf: "RR",
-        rede: "Independente",
-        status: <StatusBadge label="Ativa" />,
-      },
-      {
-        fantasia: "Boa Esperança Max",
-        cidade: "São Paulo",
-        uf: "SP",
-        rede: "Boa Esperança",
-        status: <StatusBadge label="Ativa" />,
-      },
-      {
-        fantasia: "União Alimentos",
-        cidade: "Boa Vista",
-        uf: "RR",
-        rede: "Independente",
-        status: <StatusBadge label="Ativa" />,
-      },
-      {
-        fantasia: "São Pedro Express",
-        cidade: "Manaus",
-        uf: "AM",
-        rede: "São Pedro",
-        status: <StatusBadge label="Inativa" variant="gray" />,
-      },
-      {
-        fantasia: "Global Foods",
-        cidade: "Boa Vista",
-        uf: "RR",
-        rede: "Global",
-        status: <StatusBadge label="Ativa" />,
-      },
-    ],
-  },
-  // 2 — Produtos
-  {
-    navItems: NAV_ITEMS("Produtos"),
-    breadcrumb: "Administração / Produtos",
-    title: "Produtos",
-    buttonLabel: "+ Produto",
-    columns: [
-      { key: "produto", label: "Produto" },
-      { key: "unidade", label: "Unidade" },
-      { key: "categoria", label: "Categoria" },
-      { key: "cod", label: "Cód. Barras" },
-      { key: "situacao", label: "Situação" },
-    ],
-    rows: [
-      {
-        produto: "Achocolatado Pó Sachê 1,01KG",
-        unidade: "UND",
-        categoria: "Achocolatado",
-        cod: "7896021320059",
-        situacao: <StatusBadge label="Ativo" />,
-      },
-      {
-        produto: "Água Sanitária da Ilha 12X1L",
-        unidade: "UND",
-        categoria: "Limpeza",
-        cod: "7896017200075",
-        situacao: <StatusBadge label="Ativo" />,
-      },
-      {
-        produto: "Queijo Prato Fatiado 200G",
-        unidade: "UND",
-        categoria: "Laticínios",
-        cod: "7891000100103",
-        situacao: <StatusBadge label="Ativo" />,
-      },
-      {
-        produto: "Arroz Agulhinha T1 5KG",
-        unidade: "PCT",
-        categoria: "Mercearia",
-        cod: "7896004000011",
-        situacao: <StatusBadge label="Ativo" />,
-      },
-      {
-        produto: "Detergente Neutro 500ML",
-        unidade: "UND",
-        categoria: "Limpeza",
-        cod: "7896031200511",
-        situacao: <StatusBadge label="Inativo" variant="gray" />,
-      },
-    ],
-  },
-];
-
-const APP_FEATURE_GROUPS = [
-  {
-    group: "Roteiro de Visitas",
-    items: [
-      "Lista de lojas programadas para o dia",
-      "Ordenação obrigatória com status visual",
-      "Banner fixo de visita ativa em aberto",
-    ],
-  },
-  {
-    group: "Check-in e Check-out",
-    items: [
-      "Foto obrigatória via câmera na entrada e saída",
-      "Coleta automática de GPS e geocodificação",
-      "Guia visual de enquadramento na câmera",
-    ],
-  },
-  {
-    group: "Conferência de Produtos",
-    items: [
-      "Scanner de código de barras em tempo real",
-      "Formulário com preço, lote e validade",
-      "Verificação se produto já foi conferido",
-    ],
-  },
-  {
-    group: "Gestão de Validade",
-    items: [
-      "Filtros por criticidade: crítico, atenção e ok",
-      "Cores de alerta por proximidade do vencimento",
-      "Busca por departamento e produto",
-    ],
-  },
+const APP_POINTS = [
+  "Roteiro do dia com ordem e status da visita",
+  "Check-in/out com câmera e geolocalização",
+  "Validade: departamentos, EAN e conferência",
+  "Execução com fotos do antes e depois e checklist",
 ];
 
 const FOOTER_COLUMNS = [
   {
     title: "Produto",
     links: [
-      { label: "Funcionalidades", href: "/#funcionalidades" },
-      { label: "Plataforma Web", href: "/#plataforma" },
-      { label: "App Mobile", href: "/#mobile" },
+      { label: "Como funciona", href: "/#rota" },
+      { label: "Plataforma Web", href: "/#web" },
+      { label: "App Mobile", href: "/#app" },
     ],
   },
   {
     title: "Soluções",
     links: [
-      {
-        label: "Gestão de Promotores",
-        href: "/software-gestao-promotores",
-      },
+      { label: "Gestão de Promotores", href: "/software-gestao-promotores" },
       {
         label: "App para Promotor",
         href: "/aplicativo-para-promotor-de-vendas",
       },
-      {
-        label: "Trade Marketing",
-        href: "/software-de-trade-marketing",
-      },
-      {
-        label: "Roteirização",
-        href: "/roteirizacao-de-promotores",
-      },
+      { label: "Trade Marketing", href: "/software-de-trade-marketing" },
+      { label: "Roteirização", href: "/roteirizacao-de-promotores" },
       { label: "Check-in GPS", href: "/check-in-gps-pdv" },
-      {
-        label: "Controle de Validade",
-        href: "/controle-de-validade-pdv",
-      },
+      { label: "Controle de Validade", href: "/controle-de-validade-pdv" },
     ],
   },
   {
@@ -360,499 +124,484 @@ const FOOTER_COLUMNS = [
   },
 ];
 
+function MapRoutes({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 1200 700"
+      fill="none"
+      aria-hidden
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <path
+        className="route-draw"
+        d="M80 520 C220 480, 280 360, 420 340 S620 380, 700 280 S880 140, 1080 180"
+        stroke="var(--map-line)"
+        strokeWidth="2.5"
+      />
+      <path
+        className="route-draw"
+        d="M140 160 C300 200, 360 300, 520 320 S760 260, 900 400 S1020 560, 1140 520"
+        stroke="rgba(36,166,79,0.35)"
+        strokeWidth="2"
+      />
+      {[
+        [180, 500],
+        [420, 340],
+        [700, 280],
+        [900, 400],
+        [1080, 180],
+      ].map(([x, y], i) => (
+        <g key={i} transform={`translate(${x} ${y})`}>
+          <circle className="pin-pulse" r="18" fill="rgba(249,115,22,0.35)" />
+          <circle r="7" fill={i % 2 ? "#24a64f" : "#f97316"} />
+          <circle r="2.5" fill="#fff" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 export default function LandingPage() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white font-sans">
-      {/* ── HEADER ───────────────────────────────────────────────── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center"
-            aria-label="Trade+ — página inicial"
-          >
-            <BrandLogo height={36} />
+    <div className="min-h-screen bg-[#0b1220] font-sans text-slate-100">
+      {/* ── HEADER ─────────────────────────────────────────────── */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#0b1220]/85 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="text-white">
+            <BrandMark size="md" />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((l) => (
+          <nav className="hidden items-center gap-1 md:flex">
+            {NAV.map((item) => (
               <Link
-                key={l.label}
-                href={l.href}
-                className="text-sm text-gray-600 hover:text-orange-600 transition-colors"
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-white/5 hover:text-orange-400"
               >
-                {l.label}
+                {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden items-center gap-2 md:flex">
             <a
               href={LOGIN_URL}
-              className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg px-3 py-2 text-sm text-slate-300 transition-colors hover:text-orange-400"
             >
               Entrar
             </a>
             <a
               href={REGISTER_URL}
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition-[background-color,transform] hover:bg-orange-600 hover:-translate-y-0.5"
             >
-              Teste grátis
+              {TRIAL_LABEL}
             </a>
           </div>
 
-          {/* Mobile: CTA compacto sempre visível + menu */}
-          <div className="md:hidden flex items-center gap-2">
-            <a
-              href={REGISTER_URL}
-              className="text-xs font-semibold px-3 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 transition-colors"
-            >
-              Teste grátis
-            </a>
-            <button
-              className="p-2 text-gray-600"
-              onClick={() => setMobileMenuOpen((v) => !v)}
-              aria-label="Menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
-            </button>
-          </div>
+          <button
+            type="button"
+            className="rounded-lg p-2 text-slate-300 hover:bg-white/5 hover:text-orange-400 md:hidden"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4">
-            {NAV_LINKS.map((l) => (
+        {menuOpen && (
+          <div className="border-t border-white/5 bg-[#0b1220] px-4 py-4 md:hidden">
+            {NAV.map((item) => (
               <Link
-                key={l.label}
-                href={l.href}
-                className="text-sm text-gray-700 hover:text-orange-600"
-                onClick={() => setMobileMenuOpen(false)}
+                key={item.href}
+                href={item.href}
+                className="block rounded-lg px-3 py-2.5 text-sm text-slate-200 hover:bg-white/5 hover:text-orange-400"
+                onClick={() => setMenuOpen(false)}
               >
-                {l.label}
+                {item.label}
               </Link>
             ))}
             <a
               href={REGISTER_URL}
-              className="text-sm font-semibold px-4 py-2 rounded-lg bg-orange-500 text-white text-center"
-              onClick={() => setMobileMenuOpen(false)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex w-full items-center justify-center rounded-full bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white"
+              onClick={() => setMenuOpen(false)}
             >
               {TRIAL_LABEL}
-            </a>
-            <a
-              href={LOGIN_URL}
-              className="text-sm font-medium px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Entrar
             </a>
           </div>
         )}
       </header>
 
-      {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="pt-24 sm:pt-32 pb-16 bg-gray-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top: badge + title + description — full width */}
-          <div className="text-center mb-10">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-300 bg-orange-50 text-orange-700 text-xs font-semibold mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
-              {TRIAL_NOTE}
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              Software de gestão de{" "}
-              <span className="text-orange-500">promotores de vendas</span>
+      {/* ── HERO: territory map ────────────────────────────────── */}
+      <section
+        className="map-ground relative min-h-[100svh] overflow-hidden bg-[#0b1220] pt-16"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 80% 50% at 20% 10%, rgba(249,115,22,0.22), transparent 55%), radial-gradient(ellipse 60% 45% at 90% 30%, rgba(36,166,79,0.12), transparent 50%), linear-gradient(165deg, #0b1220 0%, #111827 45%, #0f172a 100%)",
+        }}
+      >
+        <MapRoutes className="pointer-events-none absolute inset-0 h-full w-full opacity-70" />
+
+        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-between px-4 pt-14 sm:px-6 lg:px-8 lg:pt-16">
+          <div className="reveal-up max-w-2xl pb-10">
+            <BrandMark size="xl" className="mb-6" />
+            <h1 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-slate-100 sm:text-4xl lg:text-[2.75rem]">
+              Gestão de{" "}
+              <span className="font-extrabold text-orange-400">
+                promotores
+              </span>{" "}
+              e pontos de venda em um só mapa
             </h1>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Tenha controle total sobre sua equipe de campo. Gerencie visitas,
-              estoque, rotas e desempenho em tempo real com o Trade+ —
-              plataforma web e aplicativo para promotores.
+            <p className="mt-5 max-w-lg text-pretty text-base leading-relaxed text-slate-300 sm:text-lg">
+              Organize a equipe de promotores, planeje rotas no web e acompanhe
+              cada ponto de venda no app — com check-in, GPS e foto como prova
+              da visita.
             </p>
-            {/* CTAs logo abaixo da promessa: visíveis na primeira tela, inclusive no celular */}
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={REGISTER_URL}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
-              >
-                Começar teste grátis
-              </a>
-              <a
-                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_-12px_rgba(234,88,12,0.9)] transition-[background-color,transform] hover:bg-orange-600 hover:-translate-y-0.5"
               >
-                <MessageCircle className="w-4 h-4" />
-                Falar no WhatsApp
+                {TRIAL_LABEL}
+                <ArrowRight className="h-4 w-4" />
               </a>
-            </div>
-            <p className="mt-3 text-center text-sm text-gray-500">
-              {TRIAL_NOTE} Já é cliente?{" "}
-              <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
-                Entrar
-              </a>
-            </p>
-          </div>
-
-          {/* Middle: bullets (left) + mockup (right) */}
-          <div className="flex flex-col lg:flex-row items-start gap-10">
-            <div className="grid grid-cols-2 gap-3 w-full lg:flex lg:flex-col lg:justify-center lg:gap-4 lg:w-64 shrink-0">
-              {[
-                "Controle de Visitas",
-                "Controle de Estoque",
-                "Rotas Inteligentes",
-                "Check-in/Checkout",
-              ].map((f) => (
-                <span
-                  key={f}
-                  className="flex items-center gap-2 sm:gap-2.5 text-xs sm:text-sm whitespace-nowrap text-gray-700 bg-white border border-gray-200 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 shadow-sm"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
-                  {f}
-                </span>
-              ))}
-            </div>
-            <div className="flex-1 w-full min-w-0">
-              <AppMockup {...MOCKUP_CONFIGS[0]} />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── FEATURES ─────────────────────────────────────────────── */}
-      <section id="funcionalidades" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
-              Funcionalidades
-            </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Tudo que você precisa para <br className="hidden sm:block" />
-              gerenciar sua equipe de campo
-            </h2>
-            <p className="mt-4 text-gray-500 max-w-xl mx-auto">
-              Uma plataforma completa com recursos avançados para otimizar suas
-              operações de Trade Marketing.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:border-orange-100 transition-all"
+              <Link
+                href="#rota"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition-colors hover:border-orange-400/50 hover:text-orange-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-orange-50 flex items-center justify-center mb-4">
-                  {f.icon}
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {f.desc}
-                </p>
-              </div>
-            ))}
+                Ver a rota
+              </Link>
+            </div>
+            <p className="mt-3 text-xs text-slate-400">{TRIAL_NOTE}</p>
+          </div>
+
+          <div className="relative -mx-4 mt-auto sm:-mx-6 lg:-mx-8">
+            <div className="rounded-t-2xl border border-white/10 border-b-0 bg-transparent p-2 shadow-[0_-24px_80px_-20px_rgba(234,88,12,0.45)] sm:rounded-t-3xl sm:p-3">
+              <WebPanelMock variant="visitas" className="rounded-t-xl sm:rounded-t-2xl" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── WEB PLATFORM ─────────────────────────────────────────── */}
-      <section id="plataforma" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top: badge + title + description — full width */}
-          <div className="mb-10">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-300 bg-orange-50 text-orange-700 text-xs font-semibold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
-              Plataforma Web
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-              Painel administrativo completo para gestores
+      {/* ── ROTA: mechanism ────────────────────────────────────── */}
+      <section
+        id="rota"
+        className="scroll-mt-20 border-t border-white/5 bg-[#111827] py-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h2 className="text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Uma rota. Quatro paradas. Operação fechada.
             </h2>
-            <p className="text-gray-500 max-w-2xl">
-              Tenha controle total das suas operações de Trade Marketing através
-              de um painel web intuitivo e completo, acessível de qualquer
-              navegador.
+            <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
+              Do cadastro dos promotores ao check-in no ponto de venda: o
+              Trade+ liga o plano da gestão à execução em campo.
             </p>
           </div>
 
-          {/* Middle: bullets (left) + mockup (right) */}
-          <div className="flex flex-col lg:flex-row items-start gap-10">
-            <ul className="space-y-3 lg:w-72 shrink-0">
-              {PLATFORM_FEATURES.map((f) => (
+          <ol className="relative mt-14 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              className="pointer-events-none absolute left-[12%] right-[12%] top-7 hidden h-px bg-gradient-to-r from-[#EA580C] via-orange-400/80 to-[#16A34A] lg:block"
+              aria-hidden
+            />
+            {ROUTE_STOPS.map((stop) => {
+              const Icon = stop.icon;
+              return (
                 <li
-                  key={f}
-                  className="flex items-center gap-3 text-sm text-gray-700 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm"
+                  key={stop.pin}
+                  className="relative border-t border-white/10 py-8 lg:border-t-0 lg:px-4 lg:pt-0"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
-                  {f}
+                  <div className="relative z-10 mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#EA580C] text-white shadow-[0_0_0_6px_#111827]">
+                    <Icon className="h-6 w-6" strokeWidth={2} aria-hidden />
+                    <span className="sr-only">Parada {stop.pin}</span>
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-orange-400">
+                    {stop.pin}
+                  </p>
+                  <h3 className="mt-1.5 text-xl font-bold tracking-tight text-white">
+                    {stop.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                    {stop.desc}
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── WEB pane ───────────────────────────────────────────── */}
+      <section
+        id="web"
+        className="scroll-mt-20 bg-slate-50 py-20 text-slate-900 sm:py-24"
+      >
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+          <div>
+            <p className="text-sm font-semibold text-orange-600">
+              Destino · Painel web
+            </p>
+            <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+              O território visto de cima
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-slate-600">
+              No painel web, gerencie promotores, planeje rotas, acompanhe
+              visitas e mantenha lojas e produtos — tudo pelo navegador.
+            </p>
+            <ul className="mt-8 space-y-3">
+              {WEB_POINTS.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-slate-700"
+                >
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#EA580C]" />
+                  {item}
                 </li>
               ))}
             </ul>
+            <a
+              href="https://web.trademanager.com.br/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#EA580C]"
+            >
+              Abrir painel
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
 
-            <div className="flex-1 w-full min-w-0">
-              {/* Tabs */}
-              <div className="flex gap-2 mb-4 flex-wrap">
-                {PLATFORM_TABS.map((t, i) => (
-                  <button
-                    key={t.label}
-                    onClick={() => setActiveTab(i)}
-                    className={`text-sm px-4 py-2 rounded-lg font-medium transition-colors ${
-                      activeTab === i
-                        ? "border-orange-500 border-2 text-orange-500 bg-white"
-                        : "bg-white border border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600"
-                    }`}
-                  >
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-              <AppMockup {...MOCKUP_CONFIGS[activeTab]} />
+          <div className="relative">
+            <WebPanelMock variant="lojas" />
+            <div className="absolute -bottom-6 -left-4 hidden w-52 sm:block lg:-left-8">
+              <WebPanelMini />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── MOBILE APP ─────────────────────────────────────────── */}
-      <section id="mobile" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top: badge + title + desc — full width */}
-          <div className="mb-10">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-300 bg-orange-50 text-orange-700 text-xs font-semibold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
-              Aplicativo Mobile
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-              Na palma da mão do seu promotor
-            </h2>
-            <p className="text-gray-500 max-w-2xl">
-              Aplicativo intuitivo e fácil de usar, desenvolvido para facilitar
-              o dia a dia dos promotores de vendas em campo com todas as
-              ferramentas necessárias.
+      {/* ── APP pane ───────────────────────────────────────────── */}
+      <section
+        id="app"
+        className="map-ground relative scroll-mt-20 overflow-hidden bg-[#0b1220] py-20 sm:py-24"
+      >
+        <MapRoutes className="pointer-events-none absolute inset-0 h-full w-full opacity-40" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+          <div className="order-2 relative flex justify-center lg:order-1 lg:justify-end">
+            <div className="relative flex items-end">
+              <PhoneRoteiroMock className="relative z-10" />
+              <PhoneCheckinMock className="relative -ml-10 hidden translate-y-8 sm:block lg:-ml-12" />
+              <div
+                className="pointer-events-none absolute -inset-8 -z-0 rounded-full bg-[#EA580C]/15 blur-3xl"
+                aria-hidden
+              />
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <p className="text-sm font-semibold text-[#16A34A]">
+              Destino · App do promotor
             </p>
-          </div>
-
-          {/* Middle: left groups | phone | right groups */}
-          <div className="flex flex-col lg:flex-row items-center gap-8 mb-10">
-            {/* Left: first 2 groups */}
-            <div className="lg:w-72 shrink-0 space-y-5">
-              {APP_FEATURE_GROUPS.slice(0, 2).map((g) => (
-                <div
-                  key={g.group}
-                  className="bg-gray-50 border border-gray-100 rounded-xl p-4"
+            <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Na mão do promotor, em cada ponto de venda
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-slate-300">
+              App Trade+ para campo: roteiro do dia, check-in com evidência,
+              validade e execução no ponto de venda.
+            </p>
+            <ul className="mt-8 space-y-3">
+              {APP_POINTS.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-slate-200"
                 >
-                  <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">
-                    {g.group}
-                  </p>
-                  <ul className="space-y-2">
-                    {g.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-gray-700"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0 mt-0.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#16A34A]" />
+                  {item}
+                </li>
               ))}
-            </div>
-
-            {/* Phone */}
-            <div className="flex-1 flex justify-center">
-              <MobileMockup />
-            </div>
-
-            {/* Right: last 2 groups */}
-            <div className="lg:w-72 shrink-0 space-y-5">
-              {APP_FEATURE_GROUPS.slice(2).map((g) => (
-                <div
-                  key={g.group}
-                  className="bg-gray-50 border border-gray-100 rounded-xl p-4"
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://apps.apple.com/br/app/trade/id6633411717"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-xl bg-black px-4 py-2.5 text-white ring-1 ring-white/20 transition-colors hover:bg-slate-900"
+              >
+                <svg
+                  className="h-7 w-7 shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden
                 >
-                  <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">
-                    {g.group}
-                  </p>
-                  <ul className="space-y-2">
-                    {g.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-gray-700"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0 mt-0.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                </svg>
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] font-medium text-slate-300">
+                    Baixar na
+                  </span>
+                  <span className="block text-sm font-semibold tracking-tight">
+                    App Store
+                  </span>
+                </span>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.trademanager.tradeapp&pli=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-xl bg-black px-4 py-2.5 text-white ring-1 ring-white/20 transition-colors hover:bg-slate-900"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/google-play-icon.png"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className="h-7 w-7 shrink-0 object-contain"
+                  aria-hidden
+                />
+                <span className="text-left leading-tight">
+                  <span className="block text-[10px] font-medium text-slate-300">
+                    Disponível no
+                  </span>
+                  <span className="block text-sm font-semibold tracking-tight">
+                    Google Play
+                  </span>
+                </span>
+              </a>
             </div>
-          </div>
-
-          {/* Bottom: store buttons */}
-          <div className="flex flex-wrap gap-3 justify-center">
-            <a
-              href="https://apps.apple.com/br/app/trade/id6633411717"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-              </svg>
-              App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.trademanager.tradeapp&pli=1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3.609 1.814L13.792 12 3.609 22.186A.996.996 0 0 1 3 21.232V2.768a1 1 0 0 1 .609-.954zM14.208 12l3.029 3.029-9.753 5.643 6.724-8.672zm4.657-1.986a.982.982 0 0 1 0 1.972l-1.628.944L14.208 12l3.029-3.029 1.628.943zM7.484 3.328L17.237 8.97l-3.029 3.03-6.724-8.672z" />
-              </svg>
-              Google Play
-            </a>
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT ──────────────────────────────────────────────── */}
-      <section id="contato" className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
-            Contato
-          </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-            Fale com nossa equipe
+      {/* ── CONTATO ────────────────────────────────────────────── */}
+      <section
+        id="contato"
+        className="scroll-mt-20 border-t border-white/5 bg-[#111827] py-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border-2 border-orange-500 bg-[#0b1220]">
+            <MapPin className="h-6 w-6 text-orange-400" />
+          </div>
+          <h2 className="text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Próximo destino: falar com a gente
           </h2>
-          <p className="mt-3 text-gray-500 max-w-md mx-auto">
-            Nossa equipe está pronta para ajudar você a transformar sua operação
-            de Trade Marketing.
+          <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-slate-300">
+            Equipe Trade Manager pronta para encaixar o Trade+ na sua operação
+            de campo.
           </p>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="mailto:suporte@trademanager.com.br"
-              className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all group"
+              className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-left transition-colors hover:border-orange-400/40"
             >
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                <Mail className="w-5 h-5 text-orange-600" />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                E-mail
-              </p>
-              <p className="text-sm font-medium text-gray-800">
-                suporte@trademanager.com.br
-              </p>
+              <Mail className="h-5 w-5 text-orange-400" />
+              <span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-slate-400">
+                  E-mail
+                </span>
+                <span className="text-sm font-medium text-white">
+                  suporte@trademanager.com.br
+                </span>
+              </span>
             </a>
+            <a
+              href="tel:+559591390527"
+              className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-left transition-colors hover:border-orange-400/40"
+            >
+              <Phone className="h-5 w-5 text-orange-400" />
+              <span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-slate-400">
+                  Telefone
+                </span>
+                <span className="text-sm font-medium text-white">
+                  +55 (95) 99139-0527
+                </span>
+              </span>
+            </a>
+            <div className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-left">
+              <Clock className="h-5 w-5 text-[#24a64f]" />
+              <span>
+                <span className="block text-xs font-medium uppercase tracking-wider text-slate-400">
+                  Atendimento
+                </span>
+                <span className="text-sm font-medium text-white">
+                  Seg–Sex 9h–18h · Online 24h
+                </span>
+              </span>
+            </div>
+          </div>
 
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_-12px_rgba(234,88,12,0.9)] transition-[background-color,transform] hover:bg-orange-600 hover:-translate-y-0.5"
+            >
+              {TRIAL_LABEL}
+              <ArrowRight className="h-4 w-4" />
+            </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all group"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-sm font-semibold text-slate-100 transition-colors hover:border-[#25D366]/50 hover:text-[#25D366]"
             >
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                <MessageCircle className="w-5 h-5 text-orange-600" />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                WhatsApp
-              </p>
-              <p className="text-sm font-medium text-gray-800">
-                +55 (95) 99139-0527
-              </p>
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
             </a>
-
-            <div className="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-gray-200">
-              <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-orange-600" />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                Atendimento
-              </p>
-              <p className="text-sm font-medium text-gray-800 text-center">
-                Horário comercial
-                <br />
-                Seg–Sex: 8h às 18h
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <a
-              href={REGISTER_URL}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
-            >
-              {TRIAL_LABEL}
-            </a>
-            <p className="mt-3 text-sm text-gray-500">Sem cartão de crédito.</p>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ───────────────────────────────────────────────── */}
-      <footer className="bg-gray-900 text-gray-300 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-            {/* Brand */}
-            <div className="lg:col-span-1">
-              <Link
-                href="/"
-                className="flex items-center mb-3"
-                aria-label="Trade+ — página inicial"
-              >
-                <BrandLogo tone="dark" height={36} />
+      {/* ── FOOTER ─────────────────────────────────────────────── */}
+      <footer className="border-t border-white/5 bg-[#0b1220] py-14 text-slate-400">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
+            <div>
+              <Link href="/" className="text-white">
+                <BrandMark size="lg" />
               </Link>
-              <p className="text-sm text-gray-400 leading-relaxed mb-5">
-                Software de Trade Marketing para gestão de promotores de vendas
-                em campo.
+              <p className="mt-4 text-sm leading-relaxed">
+                Trade+ — gestão de promotores e execução nos pontos de venda,
+                pela Trade Manager.
               </p>
-              <div className="flex gap-3">
+              <div className="mt-5 flex gap-2">
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram @trademais_"
-                  className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  aria-label="Instagram"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 transition-colors hover:bg-orange-500 hover:text-white"
                 >
-                  <Instagram className="w-4 h-4" />
+                  <Instagram className="h-4 w-4" />
                 </a>
                 <a
                   href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Facebook Trademais"
-                  className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  aria-label="Facebook"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 transition-colors hover:bg-orange-500 hover:text-white"
                 >
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-orange-600 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
+                  <Facebook className="h-4 w-4" />
                 </a>
               </div>
             </div>
 
-            {/* Columns */}
             {FOOTER_COLUMNS.map((col) => (
               <div key={col.title}>
-                <h4 className="text-sm font-semibold text-white mb-4">
+                <h4 className="mb-4 text-sm font-semibold text-white">
                   {col.title}
                 </h4>
                 <ul className="space-y-2">
@@ -860,7 +609,7 @@ export default function LandingPage() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-gray-400 hover:text-orange-400 transition-colors"
+                        className="text-sm transition-colors hover:text-orange-400"
                       >
                         {link.label}
                       </Link>
@@ -871,7 +620,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <div className="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+          <div className="border-t border-white/5 pt-6 text-center text-xs text-slate-500">
             © 2026 Trade Manager Soluções em Trade Marketing Ltda. Todos os
             direitos reservados.
           </div>
