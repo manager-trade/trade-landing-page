@@ -407,18 +407,26 @@ export default function LandingPage() {
             </a>
           </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden p-2 text-gray-600"
-            onClick={() => setMobileMenuOpen((v) => !v)}
-            aria-label="Menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
-          </button>
+          {/* Mobile: CTA compacto sempre visível + menu */}
+          <div className="md:hidden flex items-center gap-2">
+            <a
+              href={REGISTER_URL}
+              className="text-xs font-semibold px-3 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 transition-colors"
+            >
+              Teste grátis
+            </a>
+            <button
+              className="p-2 text-gray-600"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
@@ -453,7 +461,7 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 bg-gray-50 overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top: badge + title + description — full width */}
           <div className="text-center mb-10">
@@ -470,11 +478,35 @@ export default function LandingPage() {
               estoque, rotas e desempenho em tempo real com o Trade+ —
               plataforma web e aplicativo para promotores.
             </p>
+            {/* CTAs logo abaixo da promessa: visíveis na primeira tela, inclusive no celular */}
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href={REGISTER_URL}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
+              >
+                Começar teste grátis
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Falar no WhatsApp
+              </a>
+            </div>
+            <p className="mt-3 text-center text-sm text-gray-500">
+              {TRIAL_NOTE} Já é cliente?{" "}
+              <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
+                Entrar
+              </a>
+            </p>
           </div>
 
           {/* Middle: bullets (left) + mockup (right) */}
-          <div className="flex flex-col lg:flex-row items-start gap-10 mb-10">
-            <div className="flex flex-col justify-center gap-4 lg:w-64 shrink-0">
+          <div className="flex flex-col lg:flex-row items-start gap-10">
+            <div className="grid grid-cols-2 gap-3 w-full lg:flex lg:flex-col lg:justify-center lg:gap-4 lg:w-64 shrink-0">
               {[
                 "Controle de Visitas",
                 "Controle de Estoque",
@@ -483,7 +515,7 @@ export default function LandingPage() {
               ].map((f) => (
                 <span
                   key={f}
-                  className="flex items-center gap-2.5 text-sm text-gray-700 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm"
+                  className="flex items-center gap-2 sm:gap-2.5 text-xs sm:text-sm whitespace-nowrap text-gray-700 bg-white border border-gray-200 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 shadow-sm"
                 >
                   <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                   {f}
@@ -495,30 +527,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Bottom: CTA buttons — full width centered */}
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={REGISTER_URL}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
-            >
-              Começar teste grátis
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-              Falar no WhatsApp
-            </a>
-          </div>
-          <p className="mt-3 text-center text-sm text-gray-500">
-            {TRIAL_NOTE} Já é cliente?{" "}
-            <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
-              Entrar
-            </a>
-          </p>
         </div>
       </section>
 

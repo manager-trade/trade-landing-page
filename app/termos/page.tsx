@@ -1,3 +1,4 @@
+import { OG_IMAGE } from "@/lib/seo";
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
@@ -10,6 +11,11 @@ export const metadata = {
     description:
       "Termos de Uso do Trade Manager e do produto Trade+: regras de utilização da plataforma web e do aplicativo móvel.",
     url: "/termos",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 

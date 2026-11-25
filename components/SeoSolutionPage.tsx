@@ -4,7 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { JsonLd } from "@/components/JsonLd";
 import type { SeoPageContent } from "@/lib/seo-pages";
-import { absoluteUrl, SITE_NAME } from "@/lib/seo";
+import { absoluteUrl, OG_IMAGE, SITE_NAME } from "@/lib/seo";
 import {
   LOGIN_URL,
   REGISTER_URL,
@@ -24,11 +24,13 @@ export function buildSeoPageMetadata(page: SeoPageContent): Metadata {
       url: page.path,
       type: "website",
       locale: "pt_BR",
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: `${page.title} | ${SITE_NAME}`,
       description: page.description,
+      images: [OG_IMAGE.url],
     },
   };
 }

@@ -1,3 +1,4 @@
+import { OG_IMAGE } from "@/lib/seo";
 import { PageLayout } from "@/components/PageLayout";
 
 export const metadata = {
@@ -10,6 +11,11 @@ export const metadata = {
     description:
       "Como a Trade Manager se adequa à LGPD (Lei Geral de Proteção de Dados) e quais são os direitos dos titulares.",
     url: "/lgpd",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_IMAGE.url],
   },
 };
 
