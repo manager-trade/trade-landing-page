@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/JsonLd";
@@ -7,6 +7,7 @@ import {
   buildSoftwareApplicationJsonLd,
   buildWebSiteJsonLd,
   DEFAULT_DESCRIPTION,
+  COMPANY_NAME,
   SITE_NAME,
   SITE_TAGLINE,
   SITE_URL,
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
-  creator: SITE_NAME,
-  publisher: SITE_NAME,
+  authors: [{ name: COMPANY_NAME, url: SITE_URL }],
+  creator: COMPANY_NAME,
+  publisher: COMPANY_NAME,
   category: "business",
   keywords: [
     "Trade Manager",
@@ -78,16 +79,21 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/apple-touch-icon.png",
   },
   other: {
     "geo.region": "BR-RR",
     "geo.placename": "Boa Vista",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#EA580C",
 };
 
 export default function RootLayout({

@@ -10,10 +10,10 @@ export function PageLayout({ children }: Readonly<{ children: ReactNode }>) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-base text-gray-900"
+            className="flex items-center"
+            aria-label="Trade+ — página inicial"
           >
-            <BrandLogo size="md" />
-            Trade Manager
+            <BrandLogo height={30} />
           </Link>
           <Link
             href="/"

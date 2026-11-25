@@ -8,7 +8,7 @@ Next.js independente do painel de gestão — não consome a API de operação n
 | Peça | Uso |
 |------|-----|
 | Next.js | App Router / páginas estáticas |
-| Tailwind + Radix (shadcn) | UI marketing |
+| Tailwind v4 + lucide-react | UI marketing (cores do MIV Trade+ em `styles/globals.css`) |
 | Vercel Analytics | Métricas |
 
 ## Arquitetura deste projeto
@@ -54,9 +54,13 @@ styles/
 
 ```bash
 cd trade-landing-page
-npm install   # ou pnpm install
-npm run dev
+pnpm install
+pnpm dev      # http://localhost:3000 (use --port 3002 se o painel já estiver na 3000)
+pnpm lint     # ESLint (eslint-config-next)
+pnpm build    # build de produção, com checagem de tipos
 ```
+
+No Windows com a pasta no OneDrive, se uma mudança de CSS não aparecer, apague a pasta `.next` (cache do Turbopack).
 
 Ajuste CTAs (URLs de register/login) para o ambiente da gestão (`http://localhost:3000` em dev).
 

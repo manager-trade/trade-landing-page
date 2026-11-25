@@ -27,9 +27,7 @@ import {
   CheckCircle2,
   Mail,
   MessageCircle,
-  // eslint-disable-next-line deprecation/deprecation
   Instagram,
-  // eslint-disable-next-line deprecation/deprecation
   Facebook,
 } from "lucide-react";
 import {
@@ -85,13 +83,6 @@ const FEATURES = [
     title: "Segurança de Dados",
     desc: "Dados protegidos com criptografia e backups automáticos na nuvem.",
   },
-];
-
-const STATS = [
-  { value: "98%", label: "Aumento na produtividade" },
-  { value: "+500", label: "Empresas atendidas" },
-  { value: "10k+", label: "Promotores cadastrados" },
-  { value: "24/7", label: "Suporte disponível" },
 ];
 
 const PLATFORM_FEATURES = [
@@ -381,10 +372,10 @@ export default function LandingPage() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-lg text-gray-900"
+            className="flex items-center"
+            aria-label="Trade+ — página inicial"
           >
-            <BrandLogo size="lg" />
-            Trade Manager
+            <BrandLogo height={36} />
           </Link>
 
           {/* Desktop nav */}
@@ -462,7 +453,7 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-16 bg-orange-50/60 overflow-hidden">
+      <section className="pt-32 pb-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top: badge + title + description — full width */}
           <div className="text-center mb-10">
@@ -476,7 +467,7 @@ export default function LandingPage() {
             </h1>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
               Tenha controle total sobre sua equipe de campo. Gerencie visitas,
-              estoque, rotas e desempenho em tempo real com o Trade Manager —
+              estoque, rotas e desempenho em tempo real com o Trade+ —
               plataforma web e aplicativo para promotores.
             </p>
           </div>
@@ -566,20 +557,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* ── STATS ────────────────────────────────────────────────── */}
-      {/* <section className="bg-orange-600 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white text-center">
-            {STATS.map((s) => (
-              <div key={s.value}>
-                <p className="text-4xl sm:text-5xl font-extrabold">{s.value}</p>
-                <p className="mt-1 text-sm text-orange-100">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ── WEB PLATFORM ─────────────────────────────────────────── */}
       <section id="plataforma" className="py-20 bg-gray-50">
@@ -824,10 +801,10 @@ export default function LandingPage() {
             <div className="lg:col-span-1">
               <Link
                 href="/"
-                className="flex items-center gap-2 font-bold text-lg text-white mb-3"
+                className="flex items-center mb-3"
+                aria-label="Trade+ — página inicial"
               >
-                <BrandLogo size="lg" />
-                Trade Manager
+                <BrandLogo tone="dark" height={36} />
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed mb-5">
                 Software de Trade Marketing para gestão de promotores de vendas

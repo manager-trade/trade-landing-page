@@ -3,6 +3,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Paleta do Manual de Identidade Visual Trade+ v1.0.
+ * As classes `orange-*` e `gray-*` do Tailwind passam a usar as cores da marca:
+ * laranja #EA580C (hover #C2410C), grafite #111827, off-white #F6F5F3, borda #EBE8E4.
+ * Sem isso, `orange-500/600` do Tailwind v4 viram #FF6900/#F54A00 (fora do padrão).
+ */
+@theme {
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd4;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #ea580c;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+
+  --color-gray-50: #f6f5f3;
+  --color-gray-100: #ebe8e4;
+  --color-gray-200: #ebe8e4;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
