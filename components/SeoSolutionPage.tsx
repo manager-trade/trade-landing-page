@@ -64,156 +64,184 @@ function buildWebPageJsonLd(page: SeoPageContent) {
   };
 }
 
+const primaryCta =
+  "inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_-12px_rgba(234,88,12,0.9)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-orange-600";
+
+const secondaryCta =
+  "inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition-colors hover:border-orange-400/50 hover:text-orange-300";
+
 export function SeoSolutionPage({ page }: { page: SeoPageContent }) {
   return (
     <PageLayout>
       <JsonLd data={[buildWebPageJsonLd(page), buildFaqJsonLd(page)]} />
 
-      <section className="bg-gray-50 py-16 border-b border-orange-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-orange-600">
-            {page.eyebrow}
-          </span>
-          <h1 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-            {page.h1}
-          </h1>
-          <p className="text-gray-600 leading-relaxed text-lg">{page.intro}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+      <div className="bg-[#0b1220] text-slate-100">
+        {/* Hero — mesmo gradiente da home */}
+        <section
+          className="map-ground relative overflow-hidden border-b border-white/5 py-20 sm:py-24"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 80% 50% at 20% 10%, rgba(249,115,22,0.22), transparent 55%), radial-gradient(ellipse 60% 45% at 90% 30%, rgba(36,166,79,0.12), transparent 50%), linear-gradient(165deg, #0b1220 0%, #111827 45%, #0f172a 100%)",
+          }}
+        >
+          <div className="reveal-up mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-orange-400">
+              {page.eyebrow}
+            </span>
+            <h1 className="mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight text-slate-100 sm:text-4xl lg:text-[2.75rem]">
+              {page.h1}
+            </h1>
+            <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:text-lg">
+              {page.intro}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={primaryCta}
+              >
+                Começar teste grátis
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={secondaryCta}
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
+            <p className="mt-3 text-xs text-slate-400">{TRIAL_NOTE}</p>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-3xl space-y-20 px-4 py-20 sm:px-6 lg:px-8">
+          <section>
+            <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              {page.problemTitle}
+            </h2>
+            <p className="text-base leading-relaxed text-slate-300">
+              {page.problem}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              {page.benefitsTitle}
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {page.benefits.map((benefit) => (
+                <div
+                  key={benefit.title}
+                  className="rounded-2xl border border-white/10 bg-[#111827] p-5 transition-colors hover:border-orange-400/30"
+                >
+                  <div className="mb-3 flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-500/15">
+                      <benefit.icon className="h-4 w-4 text-orange-400" />
+                    </div>
+                    <p className="font-semibold text-white">{benefit.title}</p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-slate-400">
+                    {benefit.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              {page.howTitle}
+            </h2>
+            <ol className="space-y-4">
+              {page.howSteps.map((step, index) => (
+                <li
+                  key={step.title}
+                  className="flex gap-4 rounded-2xl border border-white/10 bg-[#111827] p-4"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-500 text-sm font-bold text-white">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-white">{step.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                      {step.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section>
+            <h2 className="mb-6 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              Perguntas frequentes
+            </h2>
+            <div className="space-y-4">
+              {page.faqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+                >
+                  <h3 className="mb-2 font-semibold text-white">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate-400">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-extrabold tracking-tight text-white">
+              Continue explorando
+            </h2>
+            <ul className="space-y-2">
+              {page.related.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-orange-400 transition-colors hover:text-orange-300"
+                  >
+                    <CheckCircle2 className="h-4 w-4" />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="rounded-3xl border border-white/10 bg-[#111827] px-6 py-12 text-center shadow-[0_-24px_80px_-20px_rgba(234,88,12,0.35)]">
+            <h2 className="mb-3 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+              {page.ctaTitle}
+            </h2>
+            <p className="mx-auto mb-7 max-w-md text-sm leading-relaxed text-slate-400">
+              {page.ctaDesc}
+            </p>
             <a
               href={REGISTER_URL}
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
-            >
-              Começar teste grátis
-            </a>
-            <a
-              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold text-sm hover:border-orange-500 hover:text-orange-600 transition-colors"
+              className={primaryCta}
             >
-              Falar no WhatsApp
+              {TRIAL_LABEL}
             </a>
-          </div>
-          <p className="mt-3 text-sm text-gray-500">{TRIAL_NOTE}</p>
+            <p className="mt-4 text-sm text-slate-400">
+              Sem cartão de crédito. Já é cliente?{" "}
+              <a
+                href={LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-orange-400 hover:text-orange-300 hover:underline"
+              >
+                Entrar
+              </a>
+            </p>
+          </section>
         </div>
-      </section>
-
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-16">
-        <section>
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-4">
-            {page.problemTitle}
-          </h2>
-          <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-            {page.problem}
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
-            {page.benefitsTitle}
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {page.benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-5 bg-white border border-gray-100 rounded-xl shadow-sm"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-9 h-9 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
-                    <benefit.icon className="w-4 h-4 text-orange-600" />
-                  </div>
-                  <p className="font-semibold text-gray-900">{benefit.title}</p>
-                </div>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {benefit.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
-            {page.howTitle}
-          </h2>
-          <ol className="space-y-4">
-            {page.howSteps.map((step, index) => (
-              <li
-                key={step.title}
-                className="flex gap-4 p-4 rounded-xl border border-gray-100 bg-white"
-              >
-                <span className="w-8 h-8 rounded-full bg-orange-100 text-orange-700 font-bold text-sm flex items-center justify-center shrink-0">
-                  {index + 1}
-                </span>
-                <div>
-                  <p className="font-semibold text-gray-900">{step.title}</p>
-                  <p className="text-sm text-gray-500 mt-1">{step.desc}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
-            Perguntas frequentes
-          </h2>
-          <div className="space-y-4">
-            {page.faqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="p-5 rounded-xl border border-gray-100 bg-gray-50"
-              >
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-extrabold text-gray-900 mb-4">
-            Continue explorando
-          </h2>
-          <ul className="space-y-2">
-            {page.related.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex items-center gap-2 text-sm text-orange-700 hover:text-orange-800 font-medium"
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="text-center py-4 border-t border-gray-100">
-          <h2 className="text-xl font-extrabold text-gray-900 mb-3">
-            {page.ctaTitle}
-          </h2>
-          <p className="text-gray-500 text-sm mb-6 max-w-md mx-auto">
-            {page.ctaDesc}
-          </p>
-          <a
-            href={REGISTER_URL}
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-orange-600 text-white font-semibold text-sm hover:bg-orange-700 transition-colors shadow-md shadow-orange-200"
-          >
-            {TRIAL_LABEL}
-          </a>
-          <p className="mt-3 text-sm text-gray-500">
-            Sem cartão de crédito. Já é cliente?{" "}
-            <a href={LOGIN_URL} className="font-semibold text-orange-600 hover:underline">
-              Entrar
-            </a>
-          </p>
-        </section>
       </div>
     </PageLayout>
   );
